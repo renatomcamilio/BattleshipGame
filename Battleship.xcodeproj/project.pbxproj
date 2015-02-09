@@ -19,6 +19,11 @@
 		889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */; };
 		889DF0921A889AFF00442282 /* 06-return-rematch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */; };
 		889DF0941A889C2900442282 /* 01-initial-screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF0931A889C2900442282 /* 01-initial-screen.jpg */; };
+		88B6D04F1A895CFF002B6337 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D04E1A895CFF002B6337 /* Square.swift */; };
+		88B6D0511A895DBD002B6337 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0501A895DBD002B6337 /* Boat.swift */; };
+		88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0521A895DEA002B6337 /* Fleet.swift */; };
+		88B6D0551A895EAE002B6337 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0541A895EAE002B6337 /* Player.swift */; };
+		88B6D0571A895EF2002B6337 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0561A895EF2002B6337 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,12 @@
 		889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "05-winner-loser.jpg"; sourceTree = "<group>"; };
 		889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "06-return-rematch.jpg"; sourceTree = "<group>"; };
 		889DF0931A889C2900442282 /* 01-initial-screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-initial-screen.jpg"; sourceTree = "<group>"; };
+		88B6D04D1A894FD1002B6337 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Battleship/MyPlayground.playground; sourceTree = "<group>"; };
+		88B6D04E1A895CFF002B6337 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		88B6D0501A895DBD002B6337 /* Boat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
+		88B6D0521A895DEA002B6337 /* Fleet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
+		88B6D0541A895EAE002B6337 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		88B6D0561A895EF2002B6337 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +82,8 @@
 		884B388D1A86D38C00347AD9 = {
 			isa = PBXGroup;
 			children = (
+				88B6D04D1A894FD1002B6337 /* MyPlayground.playground */,
+				88AFD2A81A8960260016EFA5 /* Model */,
 				884B38981A86D38D00347AD9 /* Battleship */,
 				884B38AE1A86D38D00347AD9 /* BattleshipTests */,
 				884B38971A86D38D00347AD9 /* Products */,
@@ -136,6 +149,18 @@
 				889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */,
 			);
 			path = "pen-and-paper-storyboard";
+			sourceTree = "<group>";
+		};
+		88AFD2A81A8960260016EFA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88B6D0561A895EF2002B6337 /* Game.swift */,
+				88B6D0541A895EAE002B6337 /* Player.swift */,
+				88B6D04E1A895CFF002B6337 /* Square.swift */,
+				88B6D0501A895DBD002B6337 /* Boat.swift */,
+				88B6D0521A895DEA002B6337 /* Fleet.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +272,11 @@
 			files = (
 				884B389E1A86D38D00347AD9 /* ViewController.swift in Sources */,
 				884B389C1A86D38D00347AD9 /* AppDelegate.swift in Sources */,
+				88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */,
+				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,
+				88B6D04F1A895CFF002B6337 /* Square.swift in Sources */,
+				88B6D0511A895DBD002B6337 /* Boat.swift in Sources */,
+				88B6D0571A895EF2002B6337 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
