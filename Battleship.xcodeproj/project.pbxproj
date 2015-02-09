@@ -13,6 +13,12 @@
 		884B38A31A86D38D00347AD9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884B38A21A86D38D00347AD9 /* Images.xcassets */; };
 		884B38A61A86D38D00347AD9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884B38A41A86D38D00347AD9 /* LaunchScreen.xib */; };
 		884B38B21A86D38D00347AD9 /* BattleshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B38B11A86D38D00347AD9 /* BattleshipTests.swift */; };
+		889DF08E1A889AFF00442282 /* 02-select-game-mode.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */; };
+		889DF08F1A889AFF00442282 /* 03-fleet-setup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08A1A889AFF00442282 /* 03-fleet-setup.jpg */; };
+		889DF0901A889AFF00442282 /* 04-battle-round.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08B1A889AFF00442282 /* 04-battle-round.jpg */; };
+		889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */; };
+		889DF0921A889AFF00442282 /* 06-return-rematch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */; };
+		889DF0941A889C2900442282 /* 01-initial-screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF0931A889C2900442282 /* 01-initial-screen.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		884B38AB1A86D38D00347AD9 /* BattleshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		884B38B01A86D38D00347AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		884B38B11A86D38D00347AD9 /* BattleshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleshipTests.swift; sourceTree = "<group>"; };
+		889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "02-select-game-mode.jpg"; sourceTree = "<group>"; };
+		889DF08A1A889AFF00442282 /* 03-fleet-setup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "03-fleet-setup.jpg"; sourceTree = "<group>"; };
+		889DF08B1A889AFF00442282 /* 04-battle-round.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "04-battle-round.jpg"; sourceTree = "<group>"; };
+		889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "05-winner-loser.jpg"; sourceTree = "<group>"; };
+		889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "06-return-rematch.jpg"; sourceTree = "<group>"; };
+		889DF0931A889C2900442282 /* 01-initial-screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-initial-screen.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				884B389A1A86D38D00347AD9 /* Info.plist */,
+				889DF0881A889AFF00442282 /* pen-and-paper-storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -110,6 +123,19 @@
 				884B38B01A86D38D00347AD9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		889DF0881A889AFF00442282 /* pen-and-paper-storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				889DF0931A889C2900442282 /* 01-initial-screen.jpg */,
+				889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */,
+				889DF08A1A889AFF00442282 /* 03-fleet-setup.jpg */,
+				889DF08B1A889AFF00442282 /* 04-battle-round.jpg */,
+				889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */,
+				889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */,
+			);
+			path = "pen-and-paper-storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,8 +219,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				884B38A11A86D38D00347AD9 /* Main.storyboard in Resources */,
+				889DF0921A889AFF00442282 /* 06-return-rematch.jpg in Resources */,
+				889DF0901A889AFF00442282 /* 04-battle-round.jpg in Resources */,
+				889DF08F1A889AFF00442282 /* 03-fleet-setup.jpg in Resources */,
+				889DF0941A889C2900442282 /* 01-initial-screen.jpg in Resources */,
 				884B38A61A86D38D00347AD9 /* LaunchScreen.xib in Resources */,
+				889DF08E1A889AFF00442282 /* 02-select-game-mode.jpg in Resources */,
 				884B38A31A86D38D00347AD9 /* Images.xcassets in Resources */,
+				889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +437,7 @@
 				884B38B71A86D38D00347AD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		884B38B81A86D38D00347AD9 /* Build configuration list for PBXNativeTarget "BattleshipTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +446,7 @@
 				884B38BA1A86D38D00347AD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
