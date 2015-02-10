@@ -117,10 +117,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-oi-KlC">
+                                <rect key="frame" x="408" y="86" width="69" height="30"/>
+                                <state key="normal" title="New Fleet">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="t7b-oi-KlC" firstAttribute="trailing" secondItem="O2T-fM-kEs" secondAttribute="trailing" id="27F-oI-Wn4"/>
                             <constraint firstItem="O2T-fM-kEs" firstAttribute="centerX" secondItem="Z1v-Qa-w73" secondAttribute="centerX" id="ZWL-kJ-eYT"/>
+                            <constraint firstItem="O2T-fM-kEs" firstAttribute="top" secondItem="t7b-oi-KlC" secondAttribute="bottom" constant="8" id="tTg-Q8-Quc"/>
                             <constraint firstItem="O2T-fM-kEs" firstAttribute="centerY" secondItem="Z1v-Qa-w73" secondAttribute="centerY" id="xHb-c0-49t"/>
                         </constraints>
                     </view>
