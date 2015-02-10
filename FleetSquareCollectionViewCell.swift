@@ -9,5 +9,14 @@
 import UIKit
 
 class FleetSquareCollectionViewCell: UICollectionViewCell {
-    
+    var boat: Boat? {
+        get {
+            return self.boat
+        }
+        set {
+            if let color = newValue?.color {
+                self.backgroundColor = color
+            }
+        }
+    }
 }

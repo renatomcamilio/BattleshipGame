@@ -122,12 +122,23 @@
                                 <state key="normal" title="New Fleet">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="newFleetWasPressed:" destination="mj9-6T-iuG" eventType="touchUpInside" id="1yL-pT-cz5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRB-ys-MPY">
+                                <rect key="frame" x="403" y="484" width="74" height="30"/>
+                                <state key="normal" title="I'm Ready!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="t7b-oi-KlC" firstAttribute="trailing" secondItem="O2T-fM-kEs" secondAttribute="trailing" id="27F-oI-Wn4"/>
+                            <constraint firstItem="DRB-ys-MPY" firstAttribute="top" secondItem="O2T-fM-kEs" secondAttribute="bottom" constant="8" id="Ix3-cw-6GC"/>
                             <constraint firstItem="O2T-fM-kEs" firstAttribute="centerX" secondItem="Z1v-Qa-w73" secondAttribute="centerX" id="ZWL-kJ-eYT"/>
+                            <constraint firstItem="DRB-ys-MPY" firstAttribute="trailing" secondItem="O2T-fM-kEs" secondAttribute="trailing" id="gZt-iv-vZz"/>
                             <constraint firstItem="O2T-fM-kEs" firstAttribute="top" secondItem="t7b-oi-KlC" secondAttribute="bottom" constant="8" id="tTg-Q8-Quc"/>
                             <constraint firstItem="O2T-fM-kEs" firstAttribute="centerY" secondItem="Z1v-Qa-w73" secondAttribute="centerY" id="xHb-c0-49t"/>
                         </constraints>

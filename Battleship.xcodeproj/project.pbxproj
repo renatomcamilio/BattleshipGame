@@ -21,7 +21,6 @@
 		889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */; };
 		889DF0921A889AFF00442282 /* 06-return-rematch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */; };
 		889DF0941A889C2900442282 /* 01-initial-screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF0931A889C2900442282 /* 01-initial-screen.jpg */; };
-		88AFD2AA1A8971370016EFA5 /* FleetGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AFD2A91A8971370016EFA5 /* FleetGenerator.swift */; };
 		88B6D04F1A895CFF002B6337 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D04E1A895CFF002B6337 /* Square.swift */; };
 		88B6D0511A895DBD002B6337 /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0501A895DBD002B6337 /* Boat.swift */; };
 		88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0521A895DEA002B6337 /* Fleet.swift */; };
@@ -58,7 +57,6 @@
 		889DF08C1A889AFF00442282 /* 05-winner-loser.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "05-winner-loser.jpg"; sourceTree = "<group>"; };
 		889DF08D1A889AFF00442282 /* 06-return-rematch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "06-return-rematch.jpg"; sourceTree = "<group>"; };
 		889DF0931A889C2900442282 /* 01-initial-screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-initial-screen.jpg"; sourceTree = "<group>"; };
-		88AFD2A91A8971370016EFA5 /* FleetGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FleetGenerator.swift; path = ../FleetGenerator.swift; sourceTree = "<group>"; };
 		88B6D04D1A894FD1002B6337 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Battleship/MyPlayground.playground; sourceTree = "<group>"; };
 		88B6D04E1A895CFF002B6337 /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		88B6D0501A895DBD002B6337 /* Boat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boat.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 		884B38981A86D38D00347AD9 /* Battleship */ = {
 			isa = PBXGroup;
 			children = (
-				88AFD2A91A8971370016EFA5 /* FleetGenerator.swift */,
 				88AFD2A81A8960260016EFA5 /* Model */,
 				8818E3CD1A898FBB0007C387 /* Controller */,
 				8818E3D01A899D350007C387 /* View */,
@@ -298,7 +295,6 @@
 			files = (
 				8818E3D21A899DD90007C387 /* FleetSquareCollectionViewCell.swift in Sources */,
 				884B389E1A86D38D00347AD9 /* MainViewController.swift in Sources */,
-				88AFD2AA1A8971370016EFA5 /* FleetGenerator.swift in Sources */,
 				884B389C1A86D38D00347AD9 /* AppDelegate.swift in Sources */,
 				88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */,
 				8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */,

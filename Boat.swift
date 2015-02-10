@@ -14,16 +14,68 @@ enum BoatSize: Int {
     case Destroyer, Cruiser, Battleship, AircraftCarrier
 }
 
+enum BoatDirection: Int {
+    case Vertical, Horizontal
+    
+    func squareOffset() -> Int {
+        switch self {
+        case .Vertical:
+            return 10
+        case .Horizontal:
+            return 1
+        default:
+            return 0 // will never reach
+        }
+    }
+}
+
 class Boat {
     let size: BoatSize
-    let type: String
     let color: UIColor
-    let squares: [Square]
+    var squares = [Int]()
     
-    init(size: BoatSize, type: String, squares: [Square], color: UIColor) {
+    init(size: BoatSize, squares: [Int]?, color: UIColor) {
         self.size = size
-        self.type = type
-        self.squares = squares
+        self.squares = squares ?? [Int]()
         self.color = color
+    }
+    
+    func defineRandomBoatSquares() {
+        var boatSquares = [Int]()
+        var direction = BoatDirection(rawValue: Int(arc4random_uniform(UInt32(2))))!
+        
+        populateSquares(direction)
+    }
+    
+    private func populateSquares(direction: BoatDirection) {
+        if self.size.rawValue > self.squares.count {
+            if self.squares.count == 0 {
+                self.squares.append(Int(arc4random_uniform(UInt32(100))) + 1)
+                return populateSquares(direction)
+            }
+            
+            var normalizedPosition: Int
+            var hasEnoughSquares: Bool
+            if direction == BoatDirection.Horizontal {
+                normalizedPosition = self.squares[0] > 10 ? self.squares[0] % 10 : self.squares[0]
+
+                if normalizedPosition > 0 && normalizedPosition < self.size.rawValue {
+                    self.squares.append(self.squares.last! + direction.squareOffset())
+                } else {
+                    self.squares.append(self.squares.last! - direction.squareOffset())
+                }
+            } else {
+                normalizedPosition = self.squares[0] > 10 ? self.squares[0] / 10 : 1
+
+                if normalizedPosition > 0 && normalizedPosition > self.size.rawValue {
+                    self.squares.append(self.squares.last! - direction.squareOffset())
+                } else {
+                    self.squares.append(self.squares.last! + direction.squareOffset())
+                }
+            }
+            
+            
+            populateSquares(direction)
+        }
     }
 }
