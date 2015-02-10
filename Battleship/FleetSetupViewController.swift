@@ -12,7 +12,8 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var fleetCollectionView: UICollectionView!
     var takenPositions = [Int]()
     var boats = [Boat]()
-
+    var shotsTakenObjectID: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +22,17 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         self.fleetCollectionView.dataSource = self
         
         self.generateUniqueFleet()
+        
+        // When users launch a new game, we can add user to channel which will send out push notifications
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.addUniqueObject("BattleShipGame", forKey: "channels")
+        currentInstallation.saveInBackgroundWithBlock{ (success, error) -> Void in
+            if success {
+                println("channel created")
+            }
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,8 +124,50 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        let selectedTarget = indexPath.row
+        
+        
+        if shotsTakenObjectID == nil { // If new game add new row / ID in Parse
+            var shotsTaken = PFObject(className:"ShotsTaken")
+            shotsTaken.addObject(indexPath.row, forKey: "Shots")
+            shotsTaken.saveInBackgroundWithBlock { (success, error) -> Void in
+                if success {
+                    self.shotsTakenObjectID = shotsTaken.objectId
+                    println(self.shotsTakenObjectID)
+                }
+            }
+        } else { // If continuing game, append data in parse to keep track of game
+            var query = PFQuery(className:"ShotsTaken")
+            query.getObjectInBackgroundWithId(shotsTakenObjectID!) {
+                (shotsTaken: PFObject!, error: NSError!) -> Void in
+                if error != nil {
+                    NSLog("%@", error)
+                } else {
+                    shotsTaken.addObject(indexPath.row, forKey: "Shots")
+                    shotsTaken.saveInBackgroundWithBlock { (success, error) -> Void in
+                        if success {
+                            println(indexPath.row)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     @IBAction func newFleetWasPressed(sender: AnyObject) {
         self.generateUniqueFleet()
+        
+        // Proof of concept - setn push when action was performed such as button pressed
+        let push = PFPush()
+        push.setChannel("BattleShipGame")
+        push.setMessage("It's your turn!  Go sink some ships!")
+        push.sendPushInBackgroundWithBlock{ (success, error) -> Void in
+            if success {
+                println("push sent successfully")
+            }
+        }
     }
 
 }
