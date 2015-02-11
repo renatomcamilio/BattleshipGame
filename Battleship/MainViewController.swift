@@ -9,10 +9,17 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    let button: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        button.frame = CGRectMake(120, 180, 120, 50)
+        button.setTitle("Add User", forState: UIControlState.Normal)
+        button.addTarget(self, action: "addUserButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(button)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +34,13 @@ class MainViewController: UIViewController {
 
         }
     }
+
+    func addUserButtonPressed() {
+        let vc = AddUserViewController(nibName: nil, bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 
 }
 
