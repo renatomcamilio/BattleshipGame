@@ -64,5 +64,13 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
         // maybe define the opponent as winner, because the player is giving up
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "playerFleet" {
+            let newVC = segue.destinationViewController as PlayerCollectionViewController
+            
+            newVC.battle = self.battle
+        }
+    }
 
 }
