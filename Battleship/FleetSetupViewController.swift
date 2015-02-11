@@ -28,6 +28,8 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "startBattle" {
+            let newVC = segue.destinationViewController as BattleViewController
+            
             // CPU setup
             var CPUFleet = Fleet.generateFleet()
             
@@ -37,7 +39,7 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
             
             // prepare to Battle!
             var newBattle = Battle(player: player, opponent: CPU)
-            (segue.destinationViewController as BattleViewController).battle = newBattle
+            newVC.battle = newBattle
         }
     }
     
