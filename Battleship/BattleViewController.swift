@@ -20,7 +20,6 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.opponentFleetCollectionView.dataSource = self
         
         self.battle?.activePlayer = self.battle?.player
-        self.battle?.round++
         
         self.updateHUD()
     }
@@ -55,7 +54,7 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var cell = self.opponentFleetCollectionView.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
         var possibleBoat: Boat? = self.battle?.opponent.ownFleet.boats.filter { (boat: Boat) -> Bool in
-            return contains(boat.squares, indexPath.item + 1)
+            return contains(boat.squares, indexPath.item)
         }.first
         
         if let boat = possibleBoat {
@@ -63,6 +62,8 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
         } else {
             cell.backgroundColor = UIColor.cyanColor()
         }
+        
+        self.battle?.playerSelectedCell(indexPathItem: indexPath.item, battleVC: self)
     }
     
     // MARK: - Navigation

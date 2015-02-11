@@ -11,6 +11,7 @@ class Player {
     let ownFleet: Fleet
     unowned let opponentFleet: Fleet
     var shotsTaken = [Int]()
+    var targetsHit = [Int]()
     
     init(ownFleet: Fleet, opponentFleet: Fleet) {
         self.ownFleet = ownFleet

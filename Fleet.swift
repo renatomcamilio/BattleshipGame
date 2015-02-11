@@ -19,15 +19,20 @@ class Fleet {
     
     // MARK: - Fleet Generator
     class func generateFleet() -> Fleet {
-        func itemsAreUnique(source: [Int]) -> Bool {
+        func itemsAreUniqueAndValid(source: [Int]) -> Bool {
             var unique = [Int]()
             for item in source {
-                if !contains(unique, item) {
+                if !contains(unique, item) && item >= 0 && item < 100 {
                     unique.append(item)
                 }
             }
             
-            return source.count == unique.count
+            var validAndUnique = source.count == unique.count
+            if !validAndUnique {
+                println("Invalid Fleet. Regenerating now...")
+            }
+            
+            return validAndUnique
         }
         
         var takenPositions = [Int]()
@@ -63,7 +68,7 @@ class Fleet {
         var fleet = Fleet(boats: [aircraftCarrier, battleship, cruiser, destroyer, destroyer2, submarine, submarine2])
         fleet.takenPositions = takenPositions
         
-        if itemsAreUnique(takenPositions) { // if fleet is unique, return it
+        if itemsAreUniqueAndValid(takenPositions) { // if fleet is unique, return it
             return fleet
         } else { // else, keep generating it until it's unique
             return generateFleet()
