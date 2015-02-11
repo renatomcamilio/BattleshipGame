@@ -12,6 +12,7 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var opponentFleetCollectionView: UICollectionView!
     var battle: Battle?
+    var cell: FleetSquareCollectionViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,17 +53,8 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var cell = self.opponentFleetCollectionView.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
-        var possibleBoat: Boat? = self.battle?.opponent.ownFleet.boats.filter { (boat: Boat) -> Bool in
-            return contains(boat.squares, indexPath.item)
-        }.first
-        
-        if let boat = possibleBoat {
-            cell.boat = boat
-        } else {
-            cell.backgroundColor = UIColor.cyanColor()
-        }
-        
+        cell = self.opponentFleetCollectionView.cellForItemAtIndexPath(indexPath) as? FleetSquareCollectionViewCell
+
         self.battle?.playerSelectedCell(indexPathItem: indexPath.item, battleVC: self)
     }
     

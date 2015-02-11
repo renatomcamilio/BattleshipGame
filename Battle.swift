@@ -5,7 +5,7 @@
 //  Created by Renato Camilio on 2/10/15.
 //  Copyright (c) 2015 Renato Camilio. All rights reserved.
 //
-
+import UIKit
 
 class Battle {
     let opponent: Player
@@ -25,12 +25,8 @@ class Battle {
     }
     
 
-    //Step 2: Player takes turn
-        // Update shots taken
-        // If hit, update results in HUD
-        // check if game has ended
-        // else update round counter and repeat function
-        
+// Update GUI if boat was hits
+// Update GUI if water hit
     
     func playerSelectedCell(#indexPathItem: Int, battleVC: BattleViewController) {
         // update shots taken
@@ -38,6 +34,8 @@ class Battle {
         // was it a hit?
         var possibleBoat = somethingWasHit(indexPathItem)
         if let boatThatWasHit = possibleBoat {
+            // color cell red
+            battleVC.cell?.backgroundColor = UIColor.redColor()
             // check if boat was destroyed
             activePlayer?.targetsHit.append(indexPathItem)
             if boatWasDestroyed(boatThatWasHit) {
@@ -51,9 +49,17 @@ class Battle {
                 }
             } else {
                 // Boat hit but not destroyed do something
+                
             }
+            
+        } else {
+            // water was hit.  Do something
+            battleVC.cell?.backgroundColor = UIColor.cyanColor()
+
+            
         }
-        // water was hit.  Do something
+        
+        prepareForNextRound(battleVC)
     }
     
     //Step 3: Refresh GUI with next players turn
@@ -88,6 +94,11 @@ class Battle {
     
     func gameHasEnded() -> Bool {
         return activePlayer?.targetsHit.count == activePlayer?.opponentFleet.takenPositions.count
+    }
+    
+    func prepareForNextRound(battleVC: BattleViewController) {
+        self.round += 1
+        battleVC.roundLabel.text = "Round: \(String(self.round))"
     }
     
 }
