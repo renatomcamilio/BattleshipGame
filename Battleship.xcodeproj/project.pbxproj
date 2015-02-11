@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2769E3CE1A8B0F42009F1D8B /* ParseAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */; };
 		27A7CE9E1A8A9F70000B97D0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */; };
 		27A7CEA01A8A9F7A000B97D0 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */; };
 		27A7CEA81A8AA046000B97D0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A7CEA31A8AA046000B97D0 /* Bolts.framework */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIController.swift; sourceTree = "<group>"; };
 		27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		27A7CEA31A8AA046000B97D0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				884B389D1A86D38D00347AD9 /* MainViewController.swift */,
 				27A7CEC61A8AD7EF000B97D0 /* AddUserViewController.swift */,
 				8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */,
+				2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				8818E3D21A899DD90007C387 /* FleetSquareCollectionViewCell.swift in Sources */,
 				884B389E1A86D38D00347AD9 /* MainViewController.swift in Sources */,
 				884B389C1A86D38D00347AD9 /* AppDelegate.swift in Sources */,
+				2769E3CE1A8B0F42009F1D8B /* ParseAPIController.swift in Sources */,
 				88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */,
 				8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */,
 				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,

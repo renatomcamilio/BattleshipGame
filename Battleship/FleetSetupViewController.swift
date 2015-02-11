@@ -12,7 +12,9 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var fleetCollectionView: UICollectionView!
     var takenPositions = [Int]()
     var boats = [Boat]()
-    var shotsTakenObjectID: String?
+    var shotsTaken: [Int]?
+    var gameID: Int?
+    let parseAPIController = ParseAPIController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +25,10 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         
         self.generateUniqueFleet()
         
-        // When users launch a new game, we can add user to channel which will send out push notifications
-        let currentInstallation = PFInstallation.currentInstallation()
-        currentInstallation.addUniqueObject("BattleShipGame", forKey: "channels")
-        currentInstallation.saveInBackgroundWithBlock{ (success, error) -> Void in
-            if success {
-                println("channel created")
-            }
-        }
+        //MARK: Parse Push Channel Setup
+        // Example of settings up Channel for Parse - need to implement when game is launched on each user device
+        parseAPIController.setupChanel()
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,47 +123,17 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         let selectedTarget = indexPath.row
+        shotsTaken?.append(selectedTarget)
         
-        
-        if shotsTakenObjectID == nil { // If new game add new row / ID in Parse
-            var shotsTaken = PFObject(className:"ShotsTaken")
-            shotsTaken.addObject(indexPath.row, forKey: "Shots")
-            shotsTaken.saveInBackgroundWithBlock { (success, error) -> Void in
-                if success {
-                    self.shotsTakenObjectID = shotsTaken.objectId
-                    println(self.shotsTakenObjectID)
-                }
-            }
-        } else { // If continuing game, append data in parse to keep track of game
-            var query = PFQuery(className:"ShotsTaken")
-            query.getObjectInBackgroundWithId(shotsTakenObjectID!) {
-                (shotsTaken: PFObject!, error: NSError!) -> Void in
-                if error != nil {
-                    NSLog("%@", error)
-                } else {
-                    shotsTaken.addObject(indexPath.row, forKey: "Shots")
-                    shotsTaken.saveInBackgroundWithBlock { (success, error) -> Void in
-                        if success {
-                            println(indexPath.row)
-                        }
-                    }
-                }
-            }
-        }
+        //MARK: Parse Game Status Update
+        parseAPIController.updateParseWithGameStatus(&parseAPIController.shotsTakenObjectID, indexPath: indexPath)
     }
     
     @IBAction func newFleetWasPressed(sender: AnyObject) {
         self.generateUniqueFleet()
         
-        // Proof of concept - setn push when action was performed such as button pressed
-        let push = PFPush()
-        push.setChannel("BattleShipGame")
-        push.setMessage("It's your turn!  Go sink some ships!")
-        push.sendPushInBackgroundWithBlock{ (success, error) -> Void in
-            if success {
-                println("push sent successfully")
-            }
-        }
+        parseAPIController.sendPushNotification()
+        
     }
 
 }

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AddUserViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
+class AddUserViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate {
     let signupButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+    let loginButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
     let signUpLabel = UILabel(frame: CGRectMake(0, 0, 300, 30))
     let usernameTextField = UITextField(frame: CGRectMake(20.0, 30.0, 300, 30))
     let emailTextField = UITextField(frame: CGRectMake(20.0, 30.0, 300, 30))
@@ -22,16 +23,22 @@ class AddUserViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.whiteColor()
         
+        // Add Login Button
+        loginButton.frame = CGRectMake(20.0, 100, 300, 30)
+        loginButton.setTitle("Login", forState: UIControlState.Normal)
+        loginButton.addTarget(self, action: "loginButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(loginButton)
+        
         // Display SignUp Label
-        signUpLabel.center = CGPointMake(170, 120)
-        signUpLabel.text = "Please Sign Up"
+        signUpLabel.center = CGPointMake(170, 200)
+        signUpLabel.text = "Not registered? Signup below"
         signUpLabel.textAlignment = .Left
-        let labelFont = UIFont(name: "HelveticaNeue", size: 20)
+        let labelFont = UIFont(name: "HelveticaNeue", size: 16)
         signUpLabel.font = labelFont
         view.addSubview(signUpLabel)
         
         // Add Username Text Field
-        usernameTextField.center = CGPointMake(170, 185)
+        usernameTextField.center = CGPointMake(170, 265)
         usernameTextField.backgroundColor = UIColor.whiteColor()
         usernameTextField.placeholder = " Add username"
         usernameTextField.returnKeyType = .Next
@@ -39,7 +46,7 @@ class AddUserViewController: UIViewController, UINavigationControllerDelegate, U
         usernameTextField.delegate = self
         
         // Add Email Text Field
-        emailTextField.center = CGPointMake(170, 215)
+        emailTextField.center = CGPointMake(170, 295)
         emailTextField.backgroundColor = UIColor.whiteColor()
         emailTextField.placeholder = " Add email address"
         emailTextField.returnKeyType = .Next
@@ -47,7 +54,7 @@ class AddUserViewController: UIViewController, UINavigationControllerDelegate, U
         emailTextField.delegate = self
         
         // Add Password Text Field
-        passwordTextField.center = CGPointMake(170, 245)
+        passwordTextField.center = CGPointMake(170, 325)
         passwordTextField.backgroundColor = UIColor.whiteColor()
         passwordTextField.placeholder = " Add password"
         passwordTextField.returnKeyType = .Next
@@ -55,13 +62,61 @@ class AddUserViewController: UIViewController, UINavigationControllerDelegate, U
         passwordTextField.delegate = self
         
         // Add Signup Button
-        signupButton.frame = CGRectMake(20.0, 275, 300, 30)
+        signupButton.frame = CGRectMake(20.0, 355, 300, 30)
         signupButton.setTitle("Signup", forState: UIControlState.Normal)
         signupButton.addTarget(self, action: "signupButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signupButton)
         
         
     }
+    
+    // MARK Login & SignUp
+    
+    func loginButtonPressed() {
+        let alertController = UIAlertController(title: "Login to Battleship", message: "Please enter your username and password.", preferredStyle: .Alert)
+        
+        let loginAction = UIAlertAction(title: "Login", style: .Default) { (_) in
+            // login logic goes here
+            let usernameTextField = alertController.textFields![0] as UITextField
+            let passwordTextField = alertController.textFields![1] as UITextField
+            
+            PFUser.logInWithUsernameInBackground(usernameTextField.text,
+                password: passwordTextField.text,
+                block: {
+                    (user, error) in
+                    // Capture user details on login
+                    self.currentUser = PFUser.currentUser()
+                } 
+            )
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Username"
+            
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
+                loginAction.enabled = textField.text != ""
+            }
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Password"
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addAction(loginAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+
+    }
+    
+
+    
+
     
     func signupButtonPressed() {
         var userEntered = usernameTextField.text

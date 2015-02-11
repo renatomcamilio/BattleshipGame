@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         currentInstallation.saveInBackgroundWithBlock{ (success, error) -> Void in
             if success {
                 // do something
-                println("save in background worked but was device registered?")
+                println("device registered successfully")
             }
         }
         
