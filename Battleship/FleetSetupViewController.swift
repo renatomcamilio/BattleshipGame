@@ -13,6 +13,7 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
     var takenPositions = [Int]()
     var boats = [Boat]()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,17 +29,38 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "startBattle" {
+            // CPU setup
+            var (CPUBoats, CPUTakenPositions) = generateFleet()
+            var CPUFleet = Fleet(boats: CPUBoats)
+            // Player setup
+            var playerFleet = Fleet(boats: self.boats, collectionView: self.fleetCollectionView)
+            
+            // match the guys!
+            var player = Player(ownFleet: playerFleet, opponentFleet: CPUFleet)
+            var CPU = Player(ownFleet: CPUFleet, opponentFleet: playerFleet)
+            
+            // prepare to Battle!
+            var newBattle = Battle(player: player, opponent: CPU)
+            (segue.destinationViewController as BattleViewController).battle = newBattle
+        }
+    }
+    
     // MARK: - Populate the Fleet
-    func generateFleet() {
-        var aircraftCarrier = Boat(size: BoatSize.AircraftCarrier, squares: nil, color: UIColor.blackColor())
+    func generateFleet() -> (boats: [Boat], takenPositions: [Int]) {
+        var takenPositions = [Int]()
+        
+        let aircraftCarrier = Boat(size: BoatSize.AircraftCarrier, squares: nil, color: UIColor.brownColor())
         aircraftCarrier.defineRandomBoatSquares()
         takenPositions += aircraftCarrier.squares
         
-        var battleship = Boat(size: BoatSize.Battleship, squares: nil, color: UIColor.greenColor())
+        let battleship = Boat(size: BoatSize.Battleship, squares: nil, color: UIColor.blueColor())
         battleship.defineRandomBoatSquares()
         takenPositions += battleship.squares
         
-        var cruiser = Boat(size: BoatSize.Cruiser, squares: nil, color: UIColor.redColor())
+        let cruiser = Boat(size: BoatSize.Cruiser, squares: nil, color: UIColor.redColor())
         cruiser.defineRandomBoatSquares()
         takenPositions += cruiser.squares
         
@@ -58,7 +80,11 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         submarine2.defineRandomBoatSquares()
         takenPositions += submarine2.squares
         
-        self.boats += [aircraftCarrier, battleship, cruiser, destroyer, destroyer2, submarine, submarine2]
+        if itemsAreUnique(takenPositions) { // if fleet is unique, return it
+            return ([aircraftCarrier, battleship, cruiser, destroyer, destroyer2, submarine, submarine2], takenPositions)
+        } else { // else, keep generating it until it's unique
+            return generateFleet()
+        }
     }
     
     func itemsAreUnique(source: [Int]) -> Bool {
@@ -68,21 +94,12 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
                 unique.append(item)
             }
         }
-        if source.count == unique.count {
-            println("all items are unique")
-            return true
-        } else {
-            self.takenPositions.removeAll(keepCapacity: true)
-            self.boats.removeAll(keepCapacity: true)
-            println("initial array contains duplicates")
-            return false
-        }
+        
+        return source.count == unique.count
     }
     
     func generateUniqueFleet() {
-        do {
-            generateFleet()
-        } while !itemsAreUnique(takenPositions) // if fleet is not unique, redo
+        (self.boats, self.takenPositions) = generateFleet()
         
         self.fleetCollectionView.reloadData()
     }
@@ -96,15 +113,12 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         return 100
     }
     
+    // MARK: - Fleet CollectionView Delegate
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("fleetSquare", forIndexPath: indexPath) as FleetSquareCollectionViewCell
         
         var possibleBoat: Boat? = self.boats.filter { (boat: Boat) -> Bool in
-            var hasSquare = contains(boat.squares, indexPath.item + 1)
-            if hasSquare {
-                println("boatSquares: \(boat.squares); normalized: \(boat.squares[0] > 10 ? boat.squares[0] % 10 : boat.squares[0])")
-            }
-            return hasSquare
+            return contains(boat.squares, indexPath.item + 1)
         }.first
         
         cell.boat = possibleBoat

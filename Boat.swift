@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 //(Aircraft carrier: 5), (Battleship: 4), (Cruiser: 3), (Destroyer: 2), (Submarine: 1)
 enum BoatSize: Int {
     case Submarine = 1

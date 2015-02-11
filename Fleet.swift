@@ -8,10 +8,17 @@
 
 import UIKit
 
+
 class Fleet {
     let boats: [Boat]
+    var collectionView: UICollectionView?
     
     init(boats: [Boat]) {
         self.boats = boats
+    }
+    
+    init(boats: [Boat], collectionView: UICollectionView) {
+        self.boats = boats
+        self.collectionView = collectionView
     }
 }

@@ -14,7 +14,9 @@ class FleetSquareCollectionViewCell: UICollectionViewCell {
             return self.boat
         }
         set {
-            self.backgroundColor = newValue != nil ? newValue?.color : UIColor.lightGrayColor()
+            self.backgroundColor = newValue != nil ? newValue?.color : UIColor.whiteColor()
         }
     }
+    var containsShip: Bool = false
+    var isChecked: Bool = false
 }
