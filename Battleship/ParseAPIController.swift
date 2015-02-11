@@ -73,10 +73,17 @@ class ParseAPIController {
         pushQuery.whereKey("gameID", equalTo:"sampleGameID1234")
         pushQuery.whereKey("userID", equalTo: "sampleUserID1234")
         
-        // SEND PUSH
+        // SEND PUSH WITH DATA
+        // Send data as NSDictionary - this is how we pass the game state / key data along
+        // so the receiver has everything they need to continue the game
+        let data = [
+            "SID" : shotsTakenObjectID,
+            "GID" : "sampleGameID1234"
+        ]
         let push = PFPush()
         push.setChannel("BattleShipGame")
         push.setMessage("It's your turn!  Go sink some ships!")
+        push.setData(data)
         push.sendPushInBackgroundWithBlock{ (success, error) -> Void in
             if success {
                 println("push sent successfully")

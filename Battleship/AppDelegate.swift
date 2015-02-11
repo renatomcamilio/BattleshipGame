@@ -82,7 +82,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("didReceiveRemoteNotification")
         PFPush.handlePush(userInfo)
     }
-
-
+    
+    //MARK Setup custom response to push notifications received with custom payload
+    func application(application: UIApplication,
+        didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
+        fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+            if let shotsTakenID: String = userInfo["SID"] as? String {
+                println("Payload Received: \(shotsTakenID)")
+                
+            }
+            completionHandler(UIBackgroundFetchResult.NoData)
+    }
+    
+    
 }
 
