@@ -52,8 +52,9 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         cell = self.opponentFleetCollectionView.cellForItemAtIndexPath(indexPath) as? FleetSquareCollectionViewCell
-
-        self.battle?.playerSelectedCell(indexPathItem: indexPath.item, battleVC: self)
+        if cell!.isChecked == false {
+            self.battle?.playerSelectedCell(indexPathItem: indexPath.item, battleVC: self)
+        }
     }
     
     // MARK: - Navigation
