@@ -58,7 +58,7 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("fleetSquare", forIndexPath: indexPath) as FleetSquareCollectionViewCell
         
         var possibleBoat: Boat? = self.playerFleet.boats.filter { (boat: Boat) -> Bool in
-            return contains(boat.squares, indexPath.item + 1)
+            return contains(boat.squares, indexPath.item)
         }.first
         
         cell.boat = possibleBoat

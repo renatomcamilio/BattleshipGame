@@ -20,8 +20,6 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.opponentFleetCollectionView.delegate = self
         self.opponentFleetCollectionView.dataSource = self
         
-        self.battle?.activePlayer = self.battle?.player
-        
         self.updateHUD()
     }
 

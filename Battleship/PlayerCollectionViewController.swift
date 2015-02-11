@@ -15,23 +15,13 @@ class PlayerCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         //#warning Incomplete method implementation -- Return the number of sections
         return 1
@@ -48,7 +38,7 @@ class PlayerCollectionViewController: UICollectionViewController {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as FleetSquareCollectionViewCell
         
         var possibleBoat: Boat? = self.battle?.activePlayer?.ownFleet.boats.filter { (boat: Boat) -> Bool in
-            return contains(boat.squares, indexPath.item + 1)
+            return contains(boat.squares, indexPath.item)
             }.first
         
         cell.boat = possibleBoat

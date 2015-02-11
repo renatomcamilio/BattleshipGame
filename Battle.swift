@@ -17,6 +17,7 @@ class Battle {
     init(player: Player, opponent: Player) {
         self.player = player
         self.opponent = opponent
+        self.activePlayer = player
     }
     
     
