@@ -26,9 +26,10 @@ class Battle {
     }
     
 
-// Update GUI if boat was hits
-// Update GUI if water hit
-    
+
+// TO DO: Add core animation Figure out how to rotate image / flip over
+
+   
     func playerSelectedCell(#indexPathItem: Int, battleVC: BattleViewController) {
         // update shots taken
         activePlayer?.shotsTaken.append(indexPathItem)
@@ -100,6 +101,19 @@ class Battle {
     func prepareForNextRound(battleVC: BattleViewController) {
         self.round += 1
         battleVC.roundLabel.text = "Round: \(String(self.round))"
+        // Update active player
+        if activePlayer === player {
+            activePlayer = opponent
+        } else {
+            activePlayer = player
+        }
+        // Update the collection views - load active player fleet and his opponents fleet
+        
+        
+        
+        // Reqeust player to take a turn: add UILabel "Please select a target"
+        
+        
     }
     
 }
