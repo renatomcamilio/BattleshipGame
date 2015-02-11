@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2769E3D41A8C0124009F1D8B /* PlayerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2769E3D31A8C0124009F1D8B /* PlayerCollectionViewController.swift */; };
 		8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */; };
 		8818E3D21A899DD90007C387 /* FleetSquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818E3D11A899DD90007C387 /* FleetSquareCollectionViewCell.swift */; };
 		884B389C1A86D38D00347AD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B389B1A86D38D00347AD9 /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2769E3D31A8C0124009F1D8B /* PlayerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewController.swift; sourceTree = "<group>"; };
 		8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FleetSetupViewController.swift; sourceTree = "<group>"; };
 		8818E3D11A899DD90007C387 /* FleetSquareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FleetSquareCollectionViewCell.swift; path = ../FleetSquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		884B38961A86D38D00347AD9 /* Battleship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Battleship.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +92,7 @@
 			children = (
 				884B389D1A86D38D00347AD9 /* MainViewController.swift */,
 				8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */,
+				2769E3D31A8C0124009F1D8B /* PlayerCollectionViewController.swift */,
 				889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */,
 			);
 			name = Controller;
@@ -305,6 +308,7 @@
 				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,
 				88B6D0511A895DBD002B6337 /* Boat.swift in Sources */,
 				88B6D0571A895EF2002B6337 /* Game.swift in Sources */,
+				2769E3D41A8C0124009F1D8B /* PlayerCollectionViewController.swift in Sources */,
 				889BCBC11A8ADE8A002D68E9 /* Battle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
