@@ -8,19 +8,17 @@
 
 import UIKit
 
-class BattleViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class BattleViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
-    @IBOutlet weak var opponentFleetCollectionView: UICollectionView!
+//    var opponent: Player?
+//    var player: Player?
+    
     var battle: Battle?
-    var cell: FleetSquareCollectionViewCell?
+    var opponentCollectionView: UICollectionView?
+    var playerCollectionView: UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.opponentFleetCollectionView.delegate = self
-        self.opponentFleetCollectionView.dataSource = self
-        
-        self.updateHUD()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,48 +26,98 @@ class BattleViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Dispose of any resources that can be recreated.
     }
     
-    func updateHUD() {
-        self.roundLabel.text = "Round: \(self.battle?.round as Int!)"
-    }
-
-    // MARK: - Fleet CollectionView DataSource
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
-    }
-    
-    // MARK: - Fleet CollectionView Delegate
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("fleetSquare", forIndexPath: indexPath) as FleetSquareCollectionViewCell
-        
-        cell.boat = nil
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        cell = self.opponentFleetCollectionView.cellForItemAtIndexPath(indexPath) as? FleetSquareCollectionViewCell
-        if cell!.isChecked == false {
-            self.battle?.playerSelectedCell(indexPathItem: indexPath.item, battleVC: self)
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "playerFleet" {
+            let destinationVC = segue.destinationViewController as PlayerCollectionViewController
+            
+            destinationVC.battleDelegate = self
+            self.playerCollectionView = destinationVC.collectionView
+        } else if segue.identifier == "opponentFleet" {
+            let destinationVC = segue.destinationViewController as OpponentCollectionViewController
+            
+            destinationVC.battleDelegate = self
         }
     }
     
-    // MARK: - Navigation
+    // MARK: - Battle logic
+    func thereIsOpponentBoat(indexPathItem: Int) -> (Boat?) {
+        for boat in self.battle!.opponent.ownFleet.boats {
+            for square in boat.squares {
+                if indexPathItem == square {
+                    return (boat)
+                }
+            }
+        }
+        return (nil)
+    }
+    
+    func boatWasDestroyed(boat:Boat) -> Bool {
+        var hits = [Int]()
+        for boat in self.battle!.opponent.ownFleet.boats {
+            for square in boat.squares {
+                if contains(self.battle!.activePlayer!.shotsTaken, square) {
+                    hits.append(square)
+                }
+            }
+            if hits.count == boat.squares.count {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func prepareForNextRound() {
+        self.battle!.round += 1
+        self.roundLabel.text = "Round: \(String(self.battle!.round))"
+        // Update active player
+        if self.battle!.activePlayer === self.battle!.player {
+            self.battle!.activePlayer = self.battle!.opponent
+        } else {
+            self.battle!.activePlayer = self.battle!.player
+        }
+        // Update the collection views - load active player fleet and his opponents fleet
+        
+        // Reqeust player to take a turn: add UILabel "Please select a target"
+    }
+    
+    func playerSelectedCell(indexPath: NSIndexPath) {
+        // update shots taken
+        self.battle!.activePlayer!.shotsTaken.append(indexPath.item)
+        var cell = self.opponentCollectionView?.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
+        // was it a hit?
+        var possibleBoat = thereIsOpponentBoat(indexPath.item)
+        if let boatThatWasHit = possibleBoat {
+            // color cell red
+            
+            cell.backgroundColor = UIColor.redColor()
+            // check if boat was destroyed
+            self.battle!.activePlayer!.targetsHit.append(indexPath.item)
+            if boatWasDestroyed(boatThatWasHit) {
+                // Boat destroyed do something
+                println("My \(boatThatWasHit.size) was destroyd!")
+                
+                if self.battle!.gameHasEnded() {
+                    println("Active Player won!")
+                    
+                    self.battle?.winner = self.battle?.activePlayer
+                }
+            } else {
+                // Boat hit but not destroyed do something
+                // like updating the targesHit number
+            }
+        } else {
+            // water was hit.  Do something
+            cell.backgroundColor = UIColor.cyanColor()
+        }
+        
+        self.prepareForNextRound()
+    }
+    
+    // MARK: - User interaction
     @IBAction func giveUpWasPressed(sender: AnyObject) {
         // We should return the player to the initial screen
         // maybe define the opponent as winner, because the player is giving up
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "playerFleet" {
-            let newVC = segue.destinationViewController as PlayerCollectionViewController
-            
-            newVC.battle = self.battle
-        }
-    }
-
 }

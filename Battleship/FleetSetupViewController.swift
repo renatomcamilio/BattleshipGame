@@ -34,8 +34,8 @@ class FleetSetupViewController: UIViewController, UICollectionViewDelegate, UICo
             var CPUFleet = Fleet.generateFleet()
             
             // match the guys!
-            var player = Player(ownFleet: playerFleet, opponentFleet: CPUFleet)
-            var CPU = Player(ownFleet: CPUFleet, opponentFleet: playerFleet)
+            var player = Player(ownFleet: self.playerFleet, opponentFleet: CPUFleet)
+            var CPU = Player(ownFleet: CPUFleet, opponentFleet: self.playerFleet)
             
             // prepare to Battle!
             var newBattle = Battle(player: player, opponent: CPU)
