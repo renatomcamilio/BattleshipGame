@@ -29,7 +29,6 @@ class BattleViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerFleet" {
             let fleetVC = segue.destinationViewController as FleetViewController
-            
             fleetVC.player = battle?.player
             fleetVC.opponent = battle?.opponent
             fleetVC.mode = .Player
@@ -85,8 +84,10 @@ class BattleViewController: UIViewController {
         if self.battle!.activePlayer === self.battle!.player {
             self.battle!.activePlayer = self.battle!.opponent
             self.CPUTakeTurn()
+
         } else {
             self.battle!.activePlayer = self.battle!.player
+            
         }
         //opponentCollectionView?.reloadData()
 
@@ -99,15 +100,22 @@ class BattleViewController: UIViewController {
         // it gets its opponent's fleet
         // generate a random target
         
-        // Will do the smart shot
-        // battle?.opponent.takeCPUShot()
-        
-        prepareForNextTurn()
+        if let b = battle {
+            var shootAt = b.activePlayer?.calculateBestTargetToShootAt()
+            println("Shots Taken: \(b.activePlayer?.shotsTaken)")
+            println("Opponent Positions: \(b.activePlayer?.opponentFleet?.takenPositions)")
+            println("Targets Hit: \(b.activePlayer?.targetsHit)")
+            println("Active Hits: \(b.activePlayer?.activeHits)")
+            println("Shoot at: \(shootAt)")
+            
+            b.takeShot(shootAt!, player: b.activePlayer!)
+            
+            prepareForNextTurn()
+        }
     }
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        self.battle?.activePlayer?.takeShot(indexPath.item)
-        
+        self.battle?.takeShot(indexPath.item, player: self.battle!.activePlayer!)
         self.prepareForNextTurn()
     }
     
