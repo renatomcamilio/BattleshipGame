@@ -44,4 +44,21 @@ class Battle {
         }
     }
     
+    func takeShot(index: Int, player: Player) {
+        player.shotsTaken.append(index)
+        
+        println("shooting at \(player.opponentFleet?.takenPositions)")
+        
+        if contains(player.opponentFleet?.takenPositions ?? [Int](), index) {
+            
+            player.activeHits.append(index)
+            player.targetsHit.append(index)
+            
+            
+            println("hit at \(index)")
+        } else {
+            println("missed at \(index)")
+        }
+    }
+    
 }

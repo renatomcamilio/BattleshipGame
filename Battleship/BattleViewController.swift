@@ -29,7 +29,6 @@ class BattleViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerFleet" {
             let fleetVC = segue.destinationViewController as FleetViewController
-            
             fleetVC.player = battle?.player
             fleetVC.opponent = battle?.opponent
             fleetVC.mode = .Player
@@ -64,11 +63,43 @@ class BattleViewController: UIViewController {
         
         self.roundLabel.text = "Round: \(String(self.battle!.round))"
         self.turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
+        
+        // Update active player
+        if self.battle!.activePlayer === self.battle!.player {
+            self.battle!.activePlayer = self.battle!.opponent
+            self.CPUTakeTurn()
+
+        } else {
+            self.battle!.activePlayer = self.battle!.player
+            
+        }
+        //opponentCollectionView?.reloadData()
+
+        // Update the collection views - load active player fleet and his opponents fleet
+        
+        // Reqeust player to take a turn: add UILabel "Please select a target"
+    }
+    
+    func CPUTakeTurn() {
+        // it gets its opponent's fleet
+        // generate a random target
+        
+        if let b = battle {
+            var shootAt = b.activePlayer?.calculateBestTargetToShootAt()
+            println("Shots Taken: \(b.activePlayer?.shotsTaken)")
+            println("Opponent Positions: \(b.activePlayer?.opponentFleet?.takenPositions)")
+            println("Targets Hit: \(b.activePlayer?.targetsHit)")
+            println("Active Hits: \(b.activePlayer?.activeHits)")
+            println("Shoot at: \(shootAt)")
+            
+            b.takeShot(shootAt!, player: b.activePlayer!)
+            
+            prepareForNextTurn()
+        }
     }
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        self.battle?.activePlayer?.takeShot(indexPath.item)
-        
+        self.battle?.takeShot(indexPath.item, player: self.battle!.activePlayer!)
         self.prepareForNextTurn()
     }
     
