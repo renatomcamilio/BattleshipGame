@@ -17,4 +17,8 @@ class Player {
         self.ownFleet = ownFleet
         self.opponentFleet = opponentFleet
     }
+    
+    func takeShot(index: Int) {
+        shotsTaken.append(index)
+    }
 }

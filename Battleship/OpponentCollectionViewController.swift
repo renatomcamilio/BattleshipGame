@@ -47,8 +47,10 @@ class OpponentCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var cell = self.collectionView?.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
-        if cell.isChecked == false {
+        if cell.state == FleetSquareState.Empty {
             self.battleDelegate?.playerSelectedCell(indexPath)
+        } else {
+            println("Invalid target")
         }
     }
 

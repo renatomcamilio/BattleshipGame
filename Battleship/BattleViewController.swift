@@ -10,8 +10,6 @@ import UIKit
 
 class BattleViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
-//    var opponent: Player?
-//    var player: Player?
     
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
@@ -30,11 +28,13 @@ class BattleViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerFleet" {
             let destinationVC = segue.destinationViewController as PlayerCollectionViewController
+            self.playerCollectionView = destinationVC.collectionView
             
             destinationVC.battleDelegate = self
             self.playerCollectionView = destinationVC.collectionView
         } else if segue.identifier == "opponentFleet" {
             let destinationVC = segue.destinationViewController as OpponentCollectionViewController
+            self.opponentCollectionView = destinationVC.collectionView
             
             destinationVC.battleDelegate = self
         }
@@ -52,19 +52,17 @@ class BattleViewController: UIViewController {
         return (nil)
     }
     
+    // TO DO: Make it work properly :p
+    // It's not checking right when it's destroyd (it always return destroyed)
     func boatWasDestroyed(boat:Boat) -> Bool {
         var hits = [Int]()
-        for boat in self.battle!.opponent.ownFleet.boats {
-            for square in boat.squares {
-                if contains(self.battle!.activePlayer!.shotsTaken, square) {
-                    hits.append(square)
-                }
-            }
-            if hits.count == boat.squares.count {
-                return true
+        for square in boat.squares {
+            if contains(self.battle!.activePlayer!.shotsTaken, square) {
+                hits.append(square)
             }
         }
-        return false
+
+        return hits.count == boat.squares.count
     }
     
     func prepareForNextRound() {
@@ -73,18 +71,29 @@ class BattleViewController: UIViewController {
         // Update active player
         if self.battle!.activePlayer === self.battle!.player {
             self.battle!.activePlayer = self.battle!.opponent
+            //self.CPUTakeTurn()
         } else {
             self.battle!.activePlayer = self.battle!.player
         }
+        //opponentCollectionView?.reloadData()
+
         // Update the collection views - load active player fleet and his opponents fleet
         
         // Reqeust player to take a turn: add UILabel "Please select a target"
     }
     
+    func CPUTakeTurn() {
+        // it gets its opponent's fleet
+        // generate a random target
+        
+        self.prepareForNextRound()
+    }
+    
     func playerSelectedCell(indexPath: NSIndexPath) {
         // update shots taken
-        self.battle!.activePlayer!.shotsTaken.append(indexPath.item)
-        var cell = self.opponentCollectionView?.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
+        self.battle?.activePlayer?.shotsTaken.append(indexPath.item)
+        
+        var cell = self.opponentCollectionView!.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
         // was it a hit?
         var possibleBoat = thereIsOpponentBoat(indexPath.item)
         if let boatThatWasHit = possibleBoat {
@@ -95,7 +104,7 @@ class BattleViewController: UIViewController {
             self.battle!.activePlayer!.targetsHit.append(indexPath.item)
             if boatWasDestroyed(boatThatWasHit) {
                 // Boat destroyed do something
-                println("My \(boatThatWasHit.size) was destroyd!")
+                println("My \(boatThatWasHit.size.rawValue) was destroyd!")
                 
                 if self.battle!.gameHasEnded() {
                     println("Active Player won!")

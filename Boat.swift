@@ -39,6 +39,9 @@ class Boat {
         self.size = size
         self.squares = squares ?? [Int]()
         self.color = color
+        
+        // We're only using generated boats, just calling it from inside initializer for convenience
+        self.defineRandomBoatSquares()
     }
     
     func defineRandomBoatSquares() {
