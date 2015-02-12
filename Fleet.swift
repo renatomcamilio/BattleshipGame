@@ -37,25 +37,25 @@ class Fleet {
         
         var takenPositions = [Int]()
         
-        let aircraftCarrier = Boat(size: BoatSize.AircraftCarrier, squares: nil, color: UIColor.brownColor())
+        let aircraftCarrier = Boat(size: BoatSize.AircraftCarrier, squares: nil)
         takenPositions += aircraftCarrier.squares
         
-        let battleship = Boat(size: BoatSize.Battleship, squares: nil, color: UIColor.blueColor())
+        let battleship = Boat(size: BoatSize.Battleship, squares: nil)
         takenPositions += battleship.squares
         
-        let cruiser = Boat(size: BoatSize.Cruiser, squares: nil, color: UIColor.redColor())
+        let cruiser = Boat(size: BoatSize.Cruiser, squares: nil)
         takenPositions += cruiser.squares
         
-        var destroyer = Boat(size: BoatSize.Destroyer, squares: nil, color: UIColor.purpleColor())
+        var destroyer = Boat(size: BoatSize.Destroyer, squares: nil)
         takenPositions += destroyer.squares
         
-        var destroyer2 = Boat(size: BoatSize.Destroyer, squares: nil, color: UIColor.purpleColor())
+        var destroyer2 = Boat(size: BoatSize.Destroyer, squares: nil)
         takenPositions += destroyer2.squares
         
-        var submarine = Boat(size: BoatSize.Submarine, squares: nil, color: UIColor.grayColor())
+        var submarine = Boat(size: BoatSize.Submarine, squares: nil)
         takenPositions += submarine.squares
         
-        var submarine2 = Boat(size: BoatSize.Submarine, squares: nil, color: UIColor.grayColor())
+        var submarine2 = Boat(size: BoatSize.Submarine, squares: nil)
         takenPositions += submarine2.squares
         
         var fleet = Fleet(boats: [aircraftCarrier, battleship, cruiser, destroyer, destroyer2, submarine, submarine2])

@@ -17,15 +17,6 @@ enum FleetSquareState {
 
 
 class FleetSquareCollectionViewCell: UICollectionViewCell {
-//    var boat: Boat? {
-//        get {
-//            return self.boat
-//        }
-//        set {
-//            self.backgroundColor = newValue != nil ? newValue?.color : UIColor.whiteColor()
-//        }
-//    }
-    
     var state: FleetSquareState = .Empty {
         didSet {
             switch (state) {

@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-oi-KlC">
-                                <rect key="frame" x="408" y="86" width="69" height="30"/>
+                                <rect key="frame" x="392" y="101" width="69" height="30"/>
                                 <state key="normal" title="New Fleet">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -103,7 +103,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRB-ys-MPY">
-                                <rect key="frame" x="403" y="484" width="74" height="30"/>
+                                <rect key="frame" x="387" y="469" width="74" height="30"/>
                                 <state key="normal" title="I'm Ready!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -112,10 +112,10 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDQ-4n-c3J">
-                                <rect key="frame" x="123" y="124" width="354" height="352"/>
+                                <rect key="frame" x="139" y="139" width="322" height="322"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="352" id="8In-d6-c6D"/>
-                                    <constraint firstAttribute="width" constant="354" id="qae-LT-eUC"/>
+                                    <constraint firstAttribute="height" constant="322" id="8In-d6-c6D"/>
+                                    <constraint firstAttribute="width" constant="322" id="qae-LT-eUC"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Mko-gh-RSt" kind="embed" identifier="playerFleet" id="L9C-mM-Q9T"/>
@@ -142,10 +142,11 @@
             <objects>
                 <collectionViewController id="Mko-gh-RSt" customClass="FleetViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oB2-zB-6AU">
-                        <rect key="frame" x="0.0" y="0.0" width="354" height="352"/>
+                        <rect key="frame" x="0.0" y="0.0" width="322" height="322"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.78890469159999999" green="0.78890469159999999" blue="0.78890469159999999" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="6c0-ml-b6v">
-                            <size key="itemSize" width="33" height="33"/>
+                            <size key="itemSize" width="30" height="30"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
@@ -155,7 +156,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -255,6 +256,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zBk-fd-gAn">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="302"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.78890469159999999" green="0.78890469159999999" blue="0.78890469159999999" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="y2X-Y6-agh">
                             <size key="itemSize" width="28" height="28"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -289,6 +291,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6fe-1O-6SF">
                         <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.78890469158538667" green="0.78890469158538667" blue="0.78890469158538667" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="V4o-wm-yBC">
                             <size key="itemSize" width="15" height="15"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>

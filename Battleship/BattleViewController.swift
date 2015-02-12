@@ -88,11 +88,7 @@ class BattleViewController: UIViewController {
         } else {
             self.battle!.activePlayer = self.battle!.player
         }
-        //opponentCollectionView?.reloadData()
-
-        // Update the collection views - load active player fleet and his opponents fleet
         
-        // Reqeust player to take a turn: add UILabel "Please select a target"
     }
     
     func CPUTakeTurn() {

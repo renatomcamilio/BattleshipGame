@@ -49,6 +49,7 @@ class FleetViewController: UICollectionViewController {
         let index = indexPath.item
         
         let opponentShots = opponent?.shotsTaken ?? [Int]()// Both player and opponent fleet should be aware of its opponent shots, so you prepare your fleet based on those shots (if any)
+        var possibleBoat: Boat?
         
         if contains(opponentShots, index) {// opponent own fleet logic (with hitBoat and miss)
             if contains(player?.ownFleet.takenPositions ?? [Int](), index) {// and if the player has placed any boats in here
@@ -59,7 +60,10 @@ class FleetViewController: UICollectionViewController {
         } else {// player own fleet logic (with boat colors)
             if contains(player?.ownFleet.takenPositions ?? [Int](), index) && mode == .Player {// if it's the player fleet, show the boat colors
                 cell.state = .Boat
-                // boat color override here!
+                possibleBoat = player?.ownFleet.boats.filter { (boat: Boat) -> Bool in
+                    return contains(boat.squares, index)
+                }.first
+                cell.backgroundColor = possibleBoat?.color()
             } else {
                 cell.state = .Empty
             }

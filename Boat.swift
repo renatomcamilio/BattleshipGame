@@ -32,17 +32,22 @@ enum BoatDirection: Int {
 
 class Boat {
     let size: BoatSize
-    let color: UIColor
     var squares = [Int]()
     
-    init(size: BoatSize, squares: [Int]?, color: UIColor) {
+    init(size: BoatSize, squares: [Int]?) {
         self.size = size
-        self.squares = squares ?? [Int]()
-        self.color = color
         
         // We're only using generated boats, just calling it from inside initializer for convenience
+        self.squares = squares ?? [Int]()
         self.defineRandomBoatSquares()
     }
+    
+    // MARK: - Boat colors
+    func color() -> UIColor {
+        let boatColor = UIColor.orangeColor()
+        return boatColor.colorWithAlphaComponent(CGFloat(size.rawValue)/5.0)
+    }
+    // MARK: - Random generating Boat positions
     
     func defineRandomBoatSquares() {
         var boatSquares = [Int]()
