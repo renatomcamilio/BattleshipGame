@@ -14,7 +14,6 @@ enum FleetDisplayMode {
     case Opponent
 }
 
-
 class FleetViewController: UICollectionViewController {
     
     var player: Player?
@@ -25,13 +24,9 @@ class FleetViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-
-        // Do any additional setup after loading the view.
+        
+        // ok, if there's no battleDelegate, please, generate a fleet for me
+        // if the player press the new fleet, the generate a new one
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +35,6 @@ class FleetViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -52,38 +46,27 @@ class FleetViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("fleetSquare", forIndexPath: indexPath) as FleetSquareCollectionViewCell
-        
         let index = indexPath.item
         
-        if let shots = opponent?.shotsTaken {
-            
-            if contains(shots, index) {
-                if contains(player?.ownFleet.takenPositions ?? [Int](), index) {
-                    cell.state = .HitBoat
-                } else {
-                    cell.state = .Miss
-                }
-            } else {
-                if contains(player?.ownFleet.takenPositions ?? [Int](), index) {
-                    if mode == .Player {
-                        cell.state = .Boat
-                        //if (boat type == ??)
-                         // chose a color
-                    } else {
-                        cell.state = .Empty
-                    }
-                } else {
-                    cell.state = .Empty
-                }
+        let opponentShots = opponent?.shotsTaken ?? [Int]()// Both player and opponent fleet should be aware of its opponent shots, so you prepare your fleet based on those shots (if any)
+        
+        if contains(opponentShots, index) {// opponent own fleet logic (with hitBoat and miss)
+            if contains(player?.ownFleet.takenPositions ?? [Int](), index) {// and if the player has placed any boats in here
+                cell.state = .HitBoat // then opponent has shot a boat!
+            } else {// else it was a miss, or, water
+                cell.state = .Miss
             }
-        } else {
-        
+        } else {// player own fleet logic (with boat colors)
+            if contains(player?.ownFleet.takenPositions ?? [Int](), index) && mode == .Player {// if it's the player fleet, show the boat colors
+                cell.state = .Boat
+                // boat color override here!
+            } else {
+                cell.state = .Empty
+            }
         }
-        
         
         return cell
     }
-    
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
@@ -96,5 +79,7 @@ class FleetViewController: UICollectionViewController {
         collectionView.reloadItemsAtIndexPaths([indexPath])
     }
     
-
+    func refreshView() {
+        collectionView?.reloadData()
+    }
 }

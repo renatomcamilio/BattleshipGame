@@ -8,12 +8,12 @@
 
 
 class Player {
-    let ownFleet: Fleet
-    unowned let opponentFleet: Fleet
+    var ownFleet: Fleet
+    var opponentFleet: Fleet?
     var shotsTaken = [Int]()
     var targetsHit = [Int]()
     
-    init(ownFleet: Fleet, opponentFleet: Fleet) {
+    init(ownFleet: Fleet, opponentFleet: Fleet?) {
         self.ownFleet = ownFleet
         self.opponentFleet = opponentFleet
     }
@@ -22,3 +22,4 @@ class Player {
         shotsTaken.append(index)
     }
 }
+

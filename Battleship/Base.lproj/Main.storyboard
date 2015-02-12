@@ -93,38 +93,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O2T-fM-kEs">
-                                <rect key="frame" x="123" y="124" width="354" height="352"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="354" id="MYp-3V-IEb"/>
-                                    <constraint firstAttribute="height" constant="352" id="ajg-5P-zEl"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="jvt-AV-XkH">
-                                    <size key="itemSize" width="33" height="33"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fleetSquare" id="5Ww-gX-x6H" customClass="FleetSquareCollectionViewCell" customModule="Battleship" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-oi-KlC">
                                 <rect key="frame" x="408" y="86" width="69" height="30"/>
                                 <state key="normal" title="New Fleet">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="newFleetWasPressed:" destination="mj9-6T-iuG" eventType="touchUpInside" id="1yL-pT-cz5"/>
+                                    <action selector="newFleetWasPressed:" destination="mj9-6T-iuG" eventType="touchUpInside" id="Wae-rf-vwJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRB-ys-MPY">
@@ -136,24 +111,65 @@
                                     <segue destination="WJv-cG-q9N" kind="showDetail" identifier="startBattle" id="GVv-GQ-XWZ"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDQ-4n-c3J">
+                                <rect key="frame" x="123" y="124" width="354" height="352"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="352" id="8In-d6-c6D"/>
+                                    <constraint firstAttribute="width" constant="354" id="qae-LT-eUC"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Mko-gh-RSt" kind="embed" identifier="playerFleet" id="L9C-mM-Q9T"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="t7b-oi-KlC" firstAttribute="trailing" secondItem="O2T-fM-kEs" secondAttribute="trailing" id="27F-oI-Wn4"/>
-                            <constraint firstItem="DRB-ys-MPY" firstAttribute="top" secondItem="O2T-fM-kEs" secondAttribute="bottom" constant="8" id="Ix3-cw-6GC"/>
-                            <constraint firstItem="O2T-fM-kEs" firstAttribute="centerX" secondItem="Z1v-Qa-w73" secondAttribute="centerX" id="ZWL-kJ-eYT"/>
-                            <constraint firstItem="DRB-ys-MPY" firstAttribute="trailing" secondItem="O2T-fM-kEs" secondAttribute="trailing" id="gZt-iv-vZz"/>
-                            <constraint firstItem="O2T-fM-kEs" firstAttribute="top" secondItem="t7b-oi-KlC" secondAttribute="bottom" constant="8" id="tTg-Q8-Quc"/>
-                            <constraint firstItem="O2T-fM-kEs" firstAttribute="centerY" secondItem="Z1v-Qa-w73" secondAttribute="centerY" id="xHb-c0-49t"/>
+                            <constraint firstItem="DRB-ys-MPY" firstAttribute="top" secondItem="qDQ-4n-c3J" secondAttribute="bottom" constant="8" id="3w6-f2-Kt4"/>
+                            <constraint firstItem="qDQ-4n-c3J" firstAttribute="trailing" secondItem="t7b-oi-KlC" secondAttribute="trailing" id="6oZ-18-aSe"/>
+                            <constraint firstAttribute="centerY" secondItem="qDQ-4n-c3J" secondAttribute="centerY" id="BLk-w2-oHg"/>
+                            <constraint firstAttribute="centerX" secondItem="qDQ-4n-c3J" secondAttribute="centerX" id="BSD-8I-1z1"/>
+                            <constraint firstItem="qDQ-4n-c3J" firstAttribute="trailing" secondItem="DRB-ys-MPY" secondAttribute="trailing" id="WM6-HB-NCK"/>
+                            <constraint firstItem="qDQ-4n-c3J" firstAttribute="top" secondItem="t7b-oi-KlC" secondAttribute="bottom" constant="8" id="aCJ-gG-18o"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="fleetCollectionView" destination="O2T-fM-kEs" id="fdn-nG-SuC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFF-IW-0tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2687" y="339"/>
+        </scene>
+        <!--Fleet View Controller-->
+        <scene sceneID="wly-pK-VVe">
+            <objects>
+                <collectionViewController id="Mko-gh-RSt" customClass="FleetViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oB2-zB-6AU">
+                        <rect key="frame" x="0.0" y="0.0" width="354" height="352"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="6c0-ml-b6v">
+                            <size key="itemSize" width="33" height="33"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fleetSquare" id="MaX-73-EQS" customClass="FleetSquareCollectionViewCell" customModule="Battleship" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Mko-gh-RSt" id="hmK-uj-bTi"/>
+                            <outlet property="delegate" destination="Mko-gh-RSt" id="BL4-zN-W6b"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btM-6F-Vqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2911" y="911"/>
         </scene>
         <!--Battle View Controller-->
         <scene sceneID="AHl-jD-Eyr">
@@ -204,6 +220,12 @@
                                     <action selector="giveUpWasPressed:" destination="WJv-cG-q9N" eventType="touchUpInside" id="TdU-qR-N5k"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player turn" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-gf-Loq">
+                                <rect key="frame" x="501" y="48" width="83" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -211,12 +233,15 @@
                             <constraint firstItem="0ds-SR-VYZ" firstAttribute="top" secondItem="d5X-qm-2D7" secondAttribute="bottom" constant="20" id="VJF-DV-0iK"/>
                             <constraint firstItem="d5X-qm-2D7" firstAttribute="top" secondItem="hjm-oX-9wS" secondAttribute="bottom" constant="23" id="WFL-i3-5oO"/>
                             <constraint firstItem="hjm-oX-9wS" firstAttribute="trailing" secondItem="d5X-qm-2D7" secondAttribute="trailing" id="egc-Mq-wcI"/>
+                            <constraint firstItem="Yzu-gf-Loq" firstAttribute="top" secondItem="skB-PQ-6QW" secondAttribute="bottom" constant="7.5" id="hhM-Uk-A2g"/>
                             <constraint firstItem="skB-PQ-6QW" firstAttribute="trailing" secondItem="Soy-2e-WgH" secondAttribute="trailingMargin" id="mPv-EY-Wx8"/>
                             <constraint firstAttribute="centerX" secondItem="d5X-qm-2D7" secondAttribute="centerX" id="mhG-1h-Ml8"/>
+                            <constraint firstItem="Yzu-gf-Loq" firstAttribute="trailing" secondItem="skB-PQ-6QW" secondAttribute="trailing" id="x57-nP-7x1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="roundLabel" destination="skB-PQ-6QW" id="Kjb-7v-qto"/>
+                        <outlet property="turnLabel" destination="Yzu-gf-Loq" id="YD0-fI-NSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRF-Fz-pSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,10 +282,10 @@
             </objects>
             <point key="canvasLocation" x="4167" y="594"/>
         </scene>
-        <!--Player Collection View Controller-->
+        <!--Fleet View Controller-->
         <scene sceneID="QjZ-mi-1x9">
             <objects>
-                <collectionViewController id="QI9-vI-9sB" customClass="PlayerCollectionViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="QI9-vI-9sB" customClass="FleetViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6fe-1O-6SF">
                         <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,7 +296,7 @@
                             <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playerFleetSquare" id="a6W-gM-unZ" customClass="FleetSquareCollectionViewCell" customModule="Battleship" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fleetSquare" id="a6W-gM-unZ" customClass="FleetSquareCollectionViewCell" customModule="Battleship" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

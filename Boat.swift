@@ -51,10 +51,14 @@ class Boat {
         populateSquares(direction)
     }
     
+    private func normalizeBoatPosition() {
+        map(self.squares, { $0 - 1 })
+    }
+    
     private func populateSquares(direction: BoatDirection) {
         if self.size.rawValue > self.squares.count {
             if self.squares.count == 0 {
-                self.squares.append(Int(arc4random_uniform(UInt32(100))))
+                self.squares.append(Int(arc4random_uniform(UInt32(100))) + 1)
                 return populateSquares(direction)
             }
             
@@ -69,7 +73,7 @@ class Boat {
                     self.squares.append(self.squares.last! - direction.squareOffset())
                 }
             } else {
-                normalizedPosition = self.squares[0] > 10 ? self.squares[0] / 10 : 0
+                normalizedPosition = self.squares[0] > 10 ? (self.squares[0] / 10) : 0
 
                 if normalizedPosition > 0 && normalizedPosition > self.size.rawValue {
                     self.squares.append(self.squares.last! - direction.squareOffset())
@@ -78,8 +82,9 @@ class Boat {
                 }
             }
             
-            
             populateSquares(direction)
+        } else {
+            normalizeBoatPosition()
         }
     }
 }

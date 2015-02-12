@@ -10,6 +10,7 @@ import UIKit
 
 class BattleViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
+    @IBOutlet weak var turnLabel: UILabel!
     
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
@@ -27,21 +28,25 @@ class BattleViewController: UIViewController {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerFleet" {
-            let destinationVC = segue.destinationViewController as PlayerCollectionViewController
-            self.playerCollectionView = destinationVC.collectionView
+            let fleetVC = segue.destinationViewController as FleetViewController
             
-            destinationVC.battleDelegate = self
-            self.playerCollectionView = destinationVC.collectionView
+            fleetVC.player = battle?.player
+            fleetVC.opponent = battle?.opponent
+            fleetVC.mode = .Player
+            
+            self.opponentCollectionView = fleetVC.collectionView
+            
+            fleetVC.battleDelegate = self
         } else if segue.identifier == "opponentFleet" {
-            let destinationVC = segue.destinationViewController as FleetViewController
+            let fleetVC = segue.destinationViewController as FleetViewController
             
-            destinationVC.player = battle?.opponent
-            destinationVC.opponent = battle?.player
-            destinationVC.mode = .Opponent
+            fleetVC.player = battle?.opponent
+            fleetVC.opponent = battle?.player
+            fleetVC.mode = .Opponent
             
-            self.opponentCollectionView = destinationVC.collectionView
+            self.opponentCollectionView = fleetVC.collectionView
             
-            destinationVC.battleDelegate = self
+            fleetVC.battleDelegate = self
         }
     }
     
@@ -70,15 +75,18 @@ class BattleViewController: UIViewController {
         return hits.count == boat.squares.count
     }
     
-    func prepareForNextRound() {
-        self.battle!.round += 1
+    func prepareForNextTurn() {
+        self.battle!.nextTurn()
+        
         self.roundLabel.text = "Round: \(String(self.battle!.round))"
+        self.turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
+        
         // Update active player
         if self.battle!.activePlayer === self.battle!.player {
-            //self.battle!.activePlayer = self.battle!.opponent
-            //self.CPUTakeTurn()
+            self.battle!.activePlayer = self.battle!.opponent
+            self.CPUTakeTurn()
         } else {
-            //self.battle!.activePlayer = self.battle!.player
+            self.battle!.activePlayer = self.battle!.player
         }
         //opponentCollectionView?.reloadData()
 
@@ -91,44 +99,16 @@ class BattleViewController: UIViewController {
         // it gets its opponent's fleet
         // generate a random target
         
-        self.prepareForNextRound()
+        // Will do the smart shot
+        // battle?.opponent.takeCPUShot()
+        
+        prepareForNextTurn()
     }
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        // update shots taken
-        //self.battle?.activePlayer?.shotsTaken.append(indexPath.item)
         self.battle?.activePlayer?.takeShot(indexPath.item)
         
-        
-//        
-//        var cell = self.opponentCollectionView!.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
-//        // was it a hit?
-//        var possibleBoat = thereIsOpponentBoat(indexPath.item)
-//        if let boatThatWasHit = possibleBoat {
-//            // color cell red
-//            
-//            cell.backgroundColor = UIColor.redColor()
-//            // check if boat was destroyed
-//            self.battle!.activePlayer!.targetsHit.append(indexPath.item)
-//            if boatWasDestroyed(boatThatWasHit) {
-//                // Boat destroyed do something
-//                println("My \(boatThatWasHit.size.rawValue) was destroyd!")
-//                
-//                if self.battle!.gameHasEnded() {
-//                    println("Active Player won!")
-//                    
-//                    self.battle?.winner = self.battle?.activePlayer
-//                }
-//            } else {
-//                // Boat hit but not destroyed do something
-//                // like updating the targesHit number
-//            }
-//        } else {
-//            // water was hit.  Do something
-//            cell.backgroundColor = UIColor.cyanColor()
-//        }
-        
-        self.prepareForNextRound()
+        self.prepareForNextTurn()
     }
     
     // MARK: - User interaction

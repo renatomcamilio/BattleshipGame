@@ -13,6 +13,7 @@ class Battle {
     var activePlayer: Player?
     var winner: Player?
     var round = 1
+    var turn = 1
     
     init(player: Player, opponent: Player) {
         self.player = player
@@ -26,8 +27,16 @@ class Battle {
     }
 
     func gameHasEnded() -> Bool {
-        return activePlayer?.targetsHit.count == activePlayer?.opponentFleet.takenPositions.count
+        return activePlayer?.targetsHit.count == activePlayer?.opponentFleet?.takenPositions.count
     }
     
+    func nextTurn() {
+        if turn == 2 {
+            round += 1
+            turn = 1
+        } else {
+            turn += 1
+        }
+    }
     
 }
