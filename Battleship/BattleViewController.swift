@@ -33,7 +33,12 @@ class BattleViewController: UIViewController {
             destinationVC.battleDelegate = self
             self.playerCollectionView = destinationVC.collectionView
         } else if segue.identifier == "opponentFleet" {
-            let destinationVC = segue.destinationViewController as OpponentCollectionViewController
+            let destinationVC = segue.destinationViewController as FleetViewController
+            
+            destinationVC.player = battle?.opponent
+            destinationVC.opponent = battle?.player
+            destinationVC.mode = .Opponent
+            
             self.opponentCollectionView = destinationVC.collectionView
             
             destinationVC.battleDelegate = self
@@ -70,10 +75,10 @@ class BattleViewController: UIViewController {
         self.roundLabel.text = "Round: \(String(self.battle!.round))"
         // Update active player
         if self.battle!.activePlayer === self.battle!.player {
-            self.battle!.activePlayer = self.battle!.opponent
+            //self.battle!.activePlayer = self.battle!.opponent
             //self.CPUTakeTurn()
         } else {
-            self.battle!.activePlayer = self.battle!.player
+            //self.battle!.activePlayer = self.battle!.player
         }
         //opponentCollectionView?.reloadData()
 
@@ -91,34 +96,37 @@ class BattleViewController: UIViewController {
     
     func playerSelectedCell(indexPath: NSIndexPath) {
         // update shots taken
-        self.battle?.activePlayer?.shotsTaken.append(indexPath.item)
+        //self.battle?.activePlayer?.shotsTaken.append(indexPath.item)
+        self.battle?.activePlayer?.takeShot(indexPath.item)
         
-        var cell = self.opponentCollectionView!.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
-        // was it a hit?
-        var possibleBoat = thereIsOpponentBoat(indexPath.item)
-        if let boatThatWasHit = possibleBoat {
-            // color cell red
-            
-            cell.backgroundColor = UIColor.redColor()
-            // check if boat was destroyed
-            self.battle!.activePlayer!.targetsHit.append(indexPath.item)
-            if boatWasDestroyed(boatThatWasHit) {
-                // Boat destroyed do something
-                println("My \(boatThatWasHit.size.rawValue) was destroyd!")
-                
-                if self.battle!.gameHasEnded() {
-                    println("Active Player won!")
-                    
-                    self.battle?.winner = self.battle?.activePlayer
-                }
-            } else {
-                // Boat hit but not destroyed do something
-                // like updating the targesHit number
-            }
-        } else {
-            // water was hit.  Do something
-            cell.backgroundColor = UIColor.cyanColor()
-        }
+        
+//        
+//        var cell = self.opponentCollectionView!.cellForItemAtIndexPath(indexPath) as FleetSquareCollectionViewCell
+//        // was it a hit?
+//        var possibleBoat = thereIsOpponentBoat(indexPath.item)
+//        if let boatThatWasHit = possibleBoat {
+//            // color cell red
+//            
+//            cell.backgroundColor = UIColor.redColor()
+//            // check if boat was destroyed
+//            self.battle!.activePlayer!.targetsHit.append(indexPath.item)
+//            if boatWasDestroyed(boatThatWasHit) {
+//                // Boat destroyed do something
+//                println("My \(boatThatWasHit.size.rawValue) was destroyd!")
+//                
+//                if self.battle!.gameHasEnded() {
+//                    println("Active Player won!")
+//                    
+//                    self.battle?.winner = self.battle?.activePlayer
+//                }
+//            } else {
+//                // Boat hit but not destroyed do something
+//                // like updating the targesHit number
+//            }
+//        } else {
+//            // water was hit.  Do something
+//            cell.backgroundColor = UIColor.cyanColor()
+//        }
         
         self.prepareForNextRound()
     }

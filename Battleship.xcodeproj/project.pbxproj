@@ -29,6 +29,7 @@
 		88B6D0551A895EAE002B6337 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0541A895EAE002B6337 /* Player.swift */; };
 		88B6D0571A895EF2002B6337 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0561A895EF2002B6337 /* Game.swift */; };
 		88B85DB91A8C16FE006177C4 /* OpponentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B85DB81A8C16FE006177C4 /* OpponentCollectionViewController.swift */; };
+		88FFBAEF1A8C550B00B66EE7 /* FleetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		88B6D0541A895EAE002B6337 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		88B6D0561A895EF2002B6337 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		88B85DB81A8C16FE006177C4 /* OpponentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpponentCollectionViewController.swift; sourceTree = "<group>"; };
+		88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FleetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */,
 				2769E3D31A8C0124009F1D8B /* PlayerCollectionViewController.swift */,
 				88B85DB81A8C16FE006177C4 /* OpponentCollectionViewController.swift */,
+				88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */,
 				889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */,
 			);
 			name = Controller;
@@ -311,6 +314,7 @@
 				8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */,
 				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,
 				88B6D0511A895DBD002B6337 /* Boat.swift in Sources */,
+				88FFBAEF1A8C550B00B66EE7 /* FleetViewController.swift in Sources */,
 				88B6D0571A895EF2002B6337 /* Game.swift in Sources */,
 				2769E3D41A8C0124009F1D8B /* PlayerCollectionViewController.swift in Sources */,
 				889BCBC11A8ADE8A002D68E9 /* Battle.swift in Sources */,

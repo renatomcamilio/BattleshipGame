@@ -40,7 +40,7 @@ class OpponentCollectionViewController: UICollectionViewController, UICollection
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as FleetSquareCollectionViewCell
         
-        cell.boat = nil
+        //cell.boat = nil
         
         return cell
     }

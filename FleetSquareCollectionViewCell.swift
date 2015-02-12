@@ -9,29 +9,34 @@
 import UIKit
 
 enum FleetSquareState {
-    case Hit
+    case Boat
+    case HitBoat
     case Miss
     case Empty
 }
 
 
 class FleetSquareCollectionViewCell: UICollectionViewCell {
-    var boat: Boat? {
-        get {
-            return self.boat
-        }
-        set {
-            self.backgroundColor = newValue != nil ? newValue?.color : UIColor.whiteColor()
-        }
-    }
+//    var boat: Boat? {
+//        get {
+//            return self.boat
+//        }
+//        set {
+//            self.backgroundColor = newValue != nil ? newValue?.color : UIColor.whiteColor()
+//        }
+//    }
     
     var state: FleetSquareState = .Empty {
         didSet {
             switch (state) {
-            case .Hit:
+            case .HitBoat:
                 self.backgroundColor = UIColor.blueColor()
-            default:
-                break
+            case .Boat:
+                self.backgroundColor = UIColor.orangeColor() // warning us that we didn't override this in the corntroller
+            case .Miss:
+                self.backgroundColor = UIColor.cyanColor()
+            case .Empty:
+                self.backgroundColor = UIColor.whiteColor()
             }
         }
     }

@@ -41,7 +41,7 @@ class PlayerCollectionViewController: UICollectionViewController {
             return contains(boat.squares, indexPath.item)
         }.first
         
-        cell.boat = possibleBoat
+        //cell.boat = possibleBoat
         
         return cell
     }

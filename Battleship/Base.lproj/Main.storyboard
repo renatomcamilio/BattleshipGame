@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="3490" y="339"/>
         </scene>
-        <!--Opponent Collection View Controller-->
+        <!--Fleet View Controller-->
         <scene sceneID="pgU-dg-zGj">
             <objects>
-                <collectionViewController id="1cC-i9-Ucs" customClass="OpponentCollectionViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="1cC-i9-Ucs" customClass="FleetViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zBk-fd-gAn">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="302"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +237,7 @@
                             <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="opponentFleetSquare" id="3iz-Z4-vp2" customClass="FleetSquareCollectionViewCell" customModule="Battleship" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fleetSquare" id="3iz-Z4-vp2" customClass="FleetSquareCollectionViewCell" customModule="Battleship" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
