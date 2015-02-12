@@ -8,6 +8,7 @@
 import UIKit
 
 class Battle {
+    
     let opponent: Player
     let player: Player
     var activePlayer: Player?
@@ -20,22 +21,26 @@ class Battle {
         self.opponent = opponent
         self.activePlayer = player
     }
-    
-    
-    func startBattle() {
-        
-    }
 
     func gameHasEnded() -> Bool {
         return activePlayer?.targetsHit.count == activePlayer?.opponentFleet?.takenPositions.count
     }
     
-    func nextTurn() {
+    func nextTurn(turnHandler: (Bool)->(Void)) {
         if turn == 2 {
             round += 1
             turn = 1
         } else {
             turn += 1
+        }
+        
+        // Update active player
+        if self.activePlayer === self.player {
+            self.activePlayer = self.opponent
+            turnHandler(true)
+        } else {
+            self.activePlayer = self.player
+            turnHandler(false)
         }
     }
     

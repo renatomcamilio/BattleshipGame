@@ -34,7 +34,7 @@ class BattleViewController: UIViewController {
             fleetVC.opponent = battle?.opponent
             fleetVC.mode = .Player
             
-            self.opponentCollectionView = fleetVC.collectionView
+            self.playerCollectionView = fleetVC.collectionView
             
             fleetVC.battleDelegate = self
         } else if segue.identifier == "opponentFleet" {
@@ -50,55 +50,20 @@ class BattleViewController: UIViewController {
         }
     }
     
-    // MARK: - Battle logic
-    func thereIsOpponentBoat(indexPathItem: Int) -> (Boat?) {
-        for boat in self.battle!.opponent.ownFleet.boats {
-            for square in boat.squares {
-                if indexPathItem == square {
-                    return (boat)
-                }
-            }
-        }
-        return (nil)
-    }
-    
-    // TO DO: Make it work properly :p
-    // It's not checking right when it's destroyd (it always return destroyed)
-    func boatWasDestroyed(boat:Boat) -> Bool {
-        var hits = [Int]()
-        for square in boat.squares {
-            if contains(self.battle!.activePlayer!.shotsTaken, square) {
-                hits.append(square)
-            }
-        }
-
-        return hits.count == boat.squares.count
-    }
-    
     func prepareForNextTurn() {
-        self.battle!.nextTurn()
+        self.battle!.nextTurn({ isCPUPlayer in
+            if isCPUPlayer {
+                var CPUTarget = NSIndexPath(forItem: Int(arc4random_uniform(UInt32(100))), inSection: 0)
+                
+                // try that target out
+                self.playerSelectedCell(CPUTarget)
+                
+                self.playerCollectionView?.reloadData()
+            }
+        })
         
         self.roundLabel.text = "Round: \(String(self.battle!.round))"
         self.turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
-        
-        // Update active player
-        if self.battle!.activePlayer === self.battle!.player {
-            self.battle!.activePlayer = self.battle!.opponent
-            self.CPUTakeTurn()
-        } else {
-            self.battle!.activePlayer = self.battle!.player
-        }
-        
-    }
-    
-    func CPUTakeTurn() {
-        // it gets its opponent's fleet
-        // generate a random target
-        
-        // Will do the smart shot
-        // battle?.opponent.takeCPUShot()
-        
-        prepareForNextTurn()
     }
     
     func playerSelectedCell(indexPath: NSIndexPath) {
