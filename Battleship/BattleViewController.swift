@@ -7,17 +7,36 @@
 //
 
 import UIKit
+import AVFoundation
 
 class BattleViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var turnLabel: UILabel!
+    @IBOutlet weak var opponentContainerView: UIView!
+    @IBOutlet weak var playerHealthLabel: UILabel!
+    @IBOutlet weak var opponentHealthLabel: UILabel!
+    var soundBoatHit = AVAudioPlayer()
+    var soundWaterHit = AVAudioPlayer()
+    
     
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
     var playerCollectionView: UICollectionView?
     
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
+        var path = NSBundle.mainBundle().pathForResource(file, ofType:type)
+        var url = NSURL.fileURLWithPath(path!)
+        var error: NSError?
+        var audioPlayer:AVAudioPlayer?
+        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        return audioPlayer!
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundBoatHit = self.setupAudioPlayerWithFile("soundEffectBoatHit", type:"caf")
+        soundWaterHit = self.setupAudioPlayerWithFile("soundEffectWaterHit", type:"caf")
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,16 +73,16 @@ class BattleViewController: UIViewController {
         }
     }
     
+    
+    
+    
     func prepareForNextTurn() {
         // TODO;"DOTO" - Mike :)
         
         // Description:
-        // Set the "focus" to  activePlayer fleet and "blur" its opponent's fleet
-        //
-        // My advice is to have one of that "Front UIView" in the opponent's fleet, 
-        // and by default, the highlighted fleet is the activePlayer, which means that
-        // it doesn't have any layer/view over it
         
+        calculatePlayerHealth()
+
         self.battle!.nextTurn({ isCPUPlayer in
             if isCPUPlayer {
                 var shotAt = self.battle!.activePlayer?.calculateBestTargetToShootAt()
@@ -73,12 +92,25 @@ class BattleViewController: UIViewController {
                 self.playerSelectedCell(CPUTarget)
                 
                 self.playerCollectionView?.reloadData()
+                
+                
+            } else {
+                var shotAt = self.battle!.activePlayer?.shotsTaken.last
+                var targetPositions = self.battle!.activePlayer!.opponentFleet!.takenPositions
+                if contains(targetPositions, shotAt!) {
+                    self.soundBoatHit.play()
+                } else {
+                    self.soundWaterHit.play()
+                }
+                
             }
         })
-        
+
         roundLabel.text = "Round: \(String(self.battle!.round))"
         turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
     }
+    
+    
     
     func playerSelectedCell(indexPath: NSIndexPath) {
         battle?.takeShot(indexPath, player: battle!.activePlayer!)
@@ -99,4 +131,40 @@ class BattleViewController: UIViewController {
         battle?.winner = battle?.opponent
         self.performSegueWithIdentifier("showBattleEndDashboard", sender: self)
     }
+    
+    func animateViews() {
+        
+        // Setup view for opponentContainerView animation
+        var opponentContainerViewFront = UIView(frame: self.opponentContainerView.frame)
+        var opponentContainerViewBack = UIView(frame: self.opponentContainerView.frame)
+        self.opponentContainerView.addSubview(opponentContainerViewFront)
+        self.opponentContainerView.addSubview(opponentContainerViewBack)
+        
+        let views = (frontView: opponentContainerViewFront, backView: opponentContainerViewBack)
+        let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
+        UIView.transitionWithView(self.opponentContainerView, duration: 0.5, options: transitionOptions, animations: {
+            // remove the front object...
+            views.frontView.removeFromSuperview()
+            
+            // ... and add the other object
+            self.opponentContainerView.addSubview(views.backView)
+            
+            }, completion: { finished in
+                // any code entered here will be applied
+                // .once the animation has completed
+        })
+
+    }
+
+    func calculatePlayerHealth() {
+        var playerInitialHealth = self.battle?.player.ownFleet.takenPositions.count
+        var playerHits = self.battle?.opponent.targetsHit.count
+        var playerHealth = Int(100 - ((Double(playerHits!) / Double(playerInitialHealth!)) * 100))
+        var opponentInitialHealth = self.battle?.opponent.ownFleet.takenPositions.count
+        var opponentHits = self.battle?.player.targetsHit.count
+        var opponentHealth = Int(100 - ((Double(opponentHits!) / Double(opponentInitialHealth!)) * 100 ))
+        playerHealthLabel.text = "Player Health: \(playerHealth)%"
+        opponentHealthLabel.text = "CPU Health: \(opponentHealth)%"
+    }
+    
 }

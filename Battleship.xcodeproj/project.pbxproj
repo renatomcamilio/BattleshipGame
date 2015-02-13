@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27B9CADB1A8DC2D10020037B /* soundEffectBoatHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */; };
+		27B9CADC1A8DC2D10020037B /* soundEffectWaterHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */; };
+		27B9CADE1A8DC3F70020037B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B9CADD1A8DC3F70020037B /* AVFoundation.framework */; };
 		8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */; };
 		8818E3D21A899DD90007C387 /* FleetSquareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818E3D11A899DD90007C387 /* FleetSquareCollectionViewCell.swift */; };
 		884B389C1A86D38D00347AD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B389B1A86D38D00347AD9 /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEffectBoatHit.caf; sourceTree = "<group>"; };
+		27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEffectWaterHit.caf; sourceTree = "<group>"; };
+		27B9CADD1A8DC3F70020037B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FleetSetupViewController.swift; sourceTree = "<group>"; };
 		8818E3D11A899DD90007C387 /* FleetSquareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FleetSquareCollectionViewCell.swift; path = ../FleetSquareCollectionViewCell.swift; sourceTree = "<group>"; };
 		884B38961A86D38D00347AD9 /* Battleship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Battleship.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B9CADE1A8DC3F70020037B /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +123,7 @@
 		884B388D1A86D38C00347AD9 = {
 			isa = PBXGroup;
 			children = (
+				27B9CADD1A8DC3F70020037B /* AVFoundation.framework */,
 				88B6D04D1A894FD1002B6337 /* MyPlayground.playground */,
 				884B38981A86D38D00347AD9 /* Battleship */,
 				884B38AE1A86D38D00347AD9 /* BattleshipTests */,
@@ -150,6 +158,8 @@
 		884B38991A86D38D00347AD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */,
+				27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */,
 				884B389A1A86D38D00347AD9 /* Info.plist */,
 				889DF0881A889AFF00442282 /* pen-and-paper-storyboard */,
 			);
@@ -286,9 +296,11 @@
 				889DF0921A889AFF00442282 /* 06-return-rematch.jpg in Resources */,
 				889DF0901A889AFF00442282 /* 04-battle-round.jpg in Resources */,
 				889DF08F1A889AFF00442282 /* 03-fleet-setup.jpg in Resources */,
+				27B9CADC1A8DC2D10020037B /* soundEffectWaterHit.caf in Resources */,
 				889DF0941A889C2900442282 /* 01-initial-screen.jpg in Resources */,
 				884B38A61A86D38D00347AD9 /* LaunchScreen.xib in Resources */,
 				889DF08E1A889AFF00442282 /* 02-select-game-mode.jpg in Resources */,
+				27B9CADB1A8DC2D10020037B /* soundEffectBoatHit.caf in Resources */,
 				884B38A31A86D38D00347AD9 /* Images.xcassets in Resources */,
 				889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */,
 			);
