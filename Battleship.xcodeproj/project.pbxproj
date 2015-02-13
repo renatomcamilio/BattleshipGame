@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27135EF71A8E97BC00ABC567 /* winningsound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27135EF61A8E97BC00ABC567 /* winningsound.caf */; };
 		27B9CADB1A8DC2D10020037B /* soundEffectBoatHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */; };
 		27B9CADC1A8DC2D10020037B /* soundEffectWaterHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */; };
 		27B9CADE1A8DC3F70020037B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B9CADD1A8DC3F70020037B /* AVFoundation.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27135EF61A8E97BC00ABC567 /* winningsound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningsound.caf; sourceTree = "<group>"; };
 		27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEffectBoatHit.caf; sourceTree = "<group>"; };
 		27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEffectWaterHit.caf; sourceTree = "<group>"; };
 		27B9CADD1A8DC3F70020037B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -158,6 +160,7 @@
 		884B38991A86D38D00347AD9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				27135EF61A8E97BC00ABC567 /* winningsound.caf */,
 				27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */,
 				27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */,
 				884B389A1A86D38D00347AD9 /* Info.plist */,
@@ -303,6 +306,7 @@
 				27B9CADB1A8DC2D10020037B /* soundEffectBoatHit.caf in Resources */,
 				884B38A31A86D38D00347AD9 /* Images.xcassets in Resources */,
 				889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */,
+				27135EF71A8E97BC00ABC567 /* winningsound.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

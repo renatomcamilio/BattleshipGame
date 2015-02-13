@@ -36,6 +36,7 @@ class BattleViewController: UIViewController {
         super.viewDidLoad()
         soundBoatHit = self.setupAudioPlayerWithFile("soundEffectBoatHit", type:"caf")
         soundWaterHit = self.setupAudioPlayerWithFile("soundEffectWaterHit", type:"caf")
+        soundWinner = self.setupAudioPlayerWithFile("winningsound", type: "caf")
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,6 +118,7 @@ class BattleViewController: UIViewController {
         // before preparing to the next turn, it's a good idea to check if the game as a winner
         // which means that the game has ended
         if battle!.gameHasWinner() {
+            self.soundWinner.play()
             self.performSegueWithIdentifier("showBattleEndDashboard", sender: self)
         } else {
             self.prepareForNextTurn()
