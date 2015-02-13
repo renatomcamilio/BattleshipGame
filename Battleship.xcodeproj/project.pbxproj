@@ -15,6 +15,8 @@
 		884B38A31A86D38D00347AD9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884B38A21A86D38D00347AD9 /* Images.xcassets */; };
 		884B38A61A86D38D00347AD9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 884B38A41A86D38D00347AD9 /* LaunchScreen.xib */; };
 		884B38B21A86D38D00347AD9 /* BattleshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B38B11A86D38D00347AD9 /* BattleshipTests.swift */; };
+		884C94451A8D787A0028D186 /* PlayerAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C94441A8D787A0028D186 /* PlayerAI.swift */; };
+		884C94471A8D79340028D186 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C94461A8D79340028D186 /* HelperFunctions.swift */; };
 		889BCBC11A8ADE8A002D68E9 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCBC01A8ADE8A002D68E9 /* Battle.swift */; };
 		889BCBC31A8AEE45002D68E9 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */; };
 		889DF08E1A889AFF00442282 /* 02-select-game-mode.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */; };
@@ -53,6 +55,8 @@
 		884B38AB1A86D38D00347AD9 /* BattleshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		884B38B01A86D38D00347AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		884B38B11A86D38D00347AD9 /* BattleshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleshipTests.swift; sourceTree = "<group>"; };
+		884C94441A8D787A0028D186 /* PlayerAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAI.swift; sourceTree = "<group>"; };
+		884C94461A8D79340028D186 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		889BCBC01A8ADE8A002D68E9 /* Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "02-select-game-mode.jpg"; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				88B6D0561A895EF2002B6337 /* Game.swift */,
 				889BCBC01A8ADE8A002D68E9 /* Battle.swift */,
 				88B6D0541A895EAE002B6337 /* Player.swift */,
+				884C94441A8D787A0028D186 /* PlayerAI.swift */,
+				884C94461A8D79340028D186 /* HelperFunctions.swift */,
 				88B6D0501A895DBD002B6337 /* Boat.swift */,
 				88B6D0521A895DEA002B6337 /* Fleet.swift */,
 			);
@@ -299,12 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884C94451A8D787A0028D186 /* PlayerAI.swift in Sources */,
 				8818E3D21A899DD90007C387 /* FleetSquareCollectionViewCell.swift in Sources */,
 				884B389E1A86D38D00347AD9 /* MainViewController.swift in Sources */,
 				884B389C1A86D38D00347AD9 /* AppDelegate.swift in Sources */,
 				88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */,
 				889BCBC31A8AEE45002D68E9 /* BattleViewController.swift in Sources */,
 				8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */,
+				884C94471A8D79340028D186 /* HelperFunctions.swift in Sources */,
 				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,
 				88B6D0511A895DBD002B6337 /* Boat.swift in Sources */,
 				88FFBAEF1A8C550B00B66EE7 /* FleetViewController.swift in Sources */,

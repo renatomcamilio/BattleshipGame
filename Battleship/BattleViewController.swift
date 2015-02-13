@@ -22,7 +22,6 @@ class BattleViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Navigation
@@ -50,6 +49,15 @@ class BattleViewController: UIViewController {
     }
     
     func prepareForNextTurn() {
+        // TODO;"DOTO" - Mike :)
+        
+        // Description:
+        // Set the "focus" to  activePlayer fleet and "blur" its opponent's fleet
+        //
+        // My advice is to have one of that "Front UIView" in the opponent's fleet, 
+        // and by default, the highlighted fleet is the activePlayer, which means that
+        // it doesn't have any layer/view over it
+        
         self.battle!.nextTurn({ isCPUPlayer in
             if isCPUPlayer {
                 var shotAt = self.battle!.activePlayer?.calculateBestTargetToShootAt()
