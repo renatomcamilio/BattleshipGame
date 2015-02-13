@@ -45,6 +45,8 @@ class BattleViewController: UIViewController {
             self.opponentCollectionView = fleetVC.collectionView
             
             fleetVC.battleDelegate = self
+        } else if segue.identifier == "showBattleEndDashboard" {
+            println("\(battle?.activePlayer!.name) won the game")
         }
     }
     
@@ -63,19 +65,27 @@ class BattleViewController: UIViewController {
                 var shotAt = self.battle!.activePlayer?.calculateBestTargetToShootAt()
                 var CPUTarget = NSIndexPath(forItem: shotAt!, inSection: 0)
                 
+                // CPU shoot at target
                 self.playerSelectedCell(CPUTarget)
                 
                 self.playerCollectionView?.reloadData()
             }
         })
         
-        self.roundLabel.text = "Round: \(String(self.battle!.round))"
-        self.turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
+        roundLabel.text = "Round: \(String(self.battle!.round))"
+        turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
     }
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        self.battle?.takeShot(indexPath, player: self.battle!.activePlayer!)
-        self.prepareForNextTurn()
+        battle?.takeShot(indexPath, player: battle!.activePlayer!)
+        
+        // before preparing to the next turn, it's a good idea to check if the game as a winner
+        // which means that the game has ended
+        if battle!.gameHasWinner() {
+            self.performSegueWithIdentifier("showBattleEndDashboard", sender: self)
+        } else {
+            self.prepareForNextTurn()
+        }
     }
     
     // MARK: - User interaction

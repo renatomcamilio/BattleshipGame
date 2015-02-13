@@ -170,7 +170,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btM-6F-Vqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="911"/>
+            <point key="canvasLocation" x="2687" y="917"/>
         </scene>
         <!--Battle View Controller-->
         <scene sceneID="AHl-jD-Eyr">
@@ -243,6 +243,7 @@
                     <connections>
                         <outlet property="roundLabel" destination="skB-PQ-6QW" id="Kjb-7v-qto"/>
                         <outlet property="turnLabel" destination="Yzu-gf-Loq" id="YD0-fI-NSd"/>
+                        <segue destination="vVR-ux-jc7" kind="presentation" identifier="showBattleEndDashboard" id="J4y-fy-hbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRF-Fz-pSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -282,7 +283,25 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR2-4k-UAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4167" y="594"/>
+            <point key="canvasLocation" x="3639" y="1105"/>
+        </scene>
+        <!--Battle End Dashboard View Controller-->
+        <scene sceneID="L1D-RF-IYB">
+            <objects>
+                <viewController id="vVR-ux-jc7" customClass="BattleEndDashboardViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vI4-oX-C66"/>
+                        <viewControllerLayoutGuide type="bottom" id="6kp-6z-TkG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YdL-Ff-jzI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWh-b7-PS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4364" y="339"/>
         </scene>
         <!--Fleet View Controller-->
         <scene sceneID="QjZ-mi-1x9">
@@ -318,7 +337,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTX-ds-3gR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4168" y="119"/>
+            <point key="canvasLocation" x="3709.5" y="819.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AOO-OA-35A">

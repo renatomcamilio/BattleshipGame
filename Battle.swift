@@ -22,11 +22,17 @@ class Battle {
         self.activePlayer = player
     }
 
-    func gameHasEnded() -> Bool {
-        return activePlayer?.targetsHit.count == activePlayer?.opponentFleet?.takenPositions.count
+    func gameHasWinner() -> Bool {
+        var isThereAWinner = activePlayer?.targetsHit.count == activePlayer?.opponentFleet?.takenPositions.count
+        
+        if isThereAWinner {
+            winner = activePlayer
+        }
+        
+        return isThereAWinner
     }
     
-    func nextTurn(turnHandler: (Bool)->(Void)) {
+    func nextTurn(turnHandler: (Bool) -> (Void)) {
         if turn == 2 {
             round += 1
             turn = 1
@@ -52,10 +58,8 @@ class Battle {
         println("shooting at \(player.opponentFleet?.takenPositions)")
         
         if contains(player.opponentFleet?.takenPositions ?? [Int](), index) {
-            
             player.activeHits.append(index)
             player.targetsHit.append(index)
-            
             
             println("hit at \(index)")
         } else {

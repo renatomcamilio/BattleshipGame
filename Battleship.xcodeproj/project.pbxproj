@@ -17,6 +17,7 @@
 		884B38B21A86D38D00347AD9 /* BattleshipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884B38B11A86D38D00347AD9 /* BattleshipTests.swift */; };
 		884C94451A8D787A0028D186 /* PlayerAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C94441A8D787A0028D186 /* PlayerAI.swift */; };
 		884C94471A8D79340028D186 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C94461A8D79340028D186 /* HelperFunctions.swift */; };
+		884C94491A8D9F830028D186 /* BattleEndDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C94481A8D9F830028D186 /* BattleEndDashboardViewController.swift */; };
 		889BCBC11A8ADE8A002D68E9 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCBC01A8ADE8A002D68E9 /* Battle.swift */; };
 		889BCBC31A8AEE45002D68E9 /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */; };
 		889DF08E1A889AFF00442282 /* 02-select-game-mode.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */; };
@@ -57,6 +58,7 @@
 		884B38B11A86D38D00347AD9 /* BattleshipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleshipTests.swift; sourceTree = "<group>"; };
 		884C94441A8D787A0028D186 /* PlayerAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerAI.swift; sourceTree = "<group>"; };
 		884C94461A8D79340028D186 /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		884C94481A8D9F830028D186 /* BattleEndDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleEndDashboardViewController.swift; sourceTree = "<group>"; };
 		889BCBC01A8ADE8A002D68E9 /* Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		889DF0891A889AFF00442282 /* 02-select-game-mode.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "02-select-game-mode.jpg"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				8818E3CB1A898FA20007C387 /* FleetSetupViewController.swift */,
 				88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */,
 				889BCBC21A8AEE45002D68E9 /* BattleViewController.swift */,
+				884C94481A8D9F830028D186 /* BattleEndDashboardViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				8818E3CC1A898FA20007C387 /* FleetSetupViewController.swift in Sources */,
 				884C94471A8D79340028D186 /* HelperFunctions.swift in Sources */,
 				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,
+				884C94491A8D9F830028D186 /* BattleEndDashboardViewController.swift in Sources */,
 				88B6D0511A895DBD002B6337 /* Boat.swift in Sources */,
 				88FFBAEF1A8C550B00B66EE7 /* FleetViewController.swift in Sources */,
 				88B6D0571A895EF2002B6337 /* Game.swift in Sources */,

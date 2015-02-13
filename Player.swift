@@ -8,6 +8,7 @@
 import UIKit
 
 class Player {
+    let name: String
     var ownFleet: Fleet
     var opponentFleet: Fleet?
     var shotsTaken = [Int]()
@@ -15,7 +16,8 @@ class Player {
     var activeHits: [Int] = [Int]() // belongs to the playerAI
     var restOfBoatCouldBeAt: [Int]? // belongs to the playerAI
     
-    init(ownFleet: Fleet, opponentFleet: Fleet?) {
+    init(ownFleet: Fleet, name: String, opponentFleet: Fleet?) {
+        self.name = name
         self.ownFleet = ownFleet
         self.opponentFleet = opponentFleet
     }

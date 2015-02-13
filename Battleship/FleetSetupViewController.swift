@@ -13,8 +13,8 @@ class FleetSetupViewController: UIViewController {
     var fleetViewController: FleetViewController?
     
     
-    var player = Player(ownFleet: Fleet.generateFleet(), opponentFleet: nil)
-    var CPU = Player(ownFleet: Fleet.generateFleet(), opponentFleet: nil)
+    var player = Player(ownFleet: Fleet.generateFleet(), name: "Player 1", opponentFleet: nil)
+    var CPU = Player(ownFleet: Fleet.generateFleet(), name: "CPU", opponentFleet: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
