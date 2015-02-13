@@ -21,11 +21,11 @@ class FleetSquareCollectionViewCell: UICollectionViewCell {
         didSet {
             switch (state) {
             case .HitBoat:
-                self.backgroundColor = UIColor.redColor()
+                self.backgroundColor = UIColor(red: 248/255, green: 76/255, blue: 23/255, alpha: 1)
             case .Boat:
                 self.backgroundColor = UIColor.orangeColor() // warning us that we didn't override this in the corntroller
             case .Miss:
-                self.backgroundColor = UIColor.cyanColor()
+                self.backgroundColor = UIColor(red: 202/255, green: 222/255, blue: 229/255, alpha: 1.0)
             case .Empty:
                 self.backgroundColor = UIColor.whiteColor()
             }
