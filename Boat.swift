@@ -57,7 +57,7 @@ class Boat {
     }
     
     private func normalizeBoatPosition() {
-        map(self.squares, { $0 - 1 })
+        self.squares = map(self.squares, { $0 - 1 })
     }
     
     private func populateSquares(direction: BoatDirection) {
@@ -69,8 +69,9 @@ class Boat {
             
             var normalizedPosition: Int
             var hasEnoughSquares: Bool
+            
             if direction == BoatDirection.Horizontal {
-                normalizedPosition = self.squares[0] > 10 ? self.squares[0] % 10 : self.squares[0]
+                normalizedPosition = self.squares[0] > 10 ? (self.squares[0] % 10 == 0 ? self.size.rawValue : self.squares[0] % 10) : self.squares[0]
 
                 if normalizedPosition > 0 && normalizedPosition < self.size.rawValue {
                     self.squares.append(self.squares.last! + direction.squareOffset())
@@ -78,7 +79,7 @@ class Boat {
                     self.squares.append(self.squares.last! - direction.squareOffset())
                 }
             } else {
-                normalizedPosition = self.squares[0] > 10 ? (self.squares[0] / 10) : 0
+                normalizedPosition = self.squares[0] > 10 ? self.squares[0] / 10 : self.squares[0]
 
                 if normalizedPosition > 0 && normalizedPosition > self.size.rawValue {
                     self.squares.append(self.squares.last! - direction.squareOffset())
