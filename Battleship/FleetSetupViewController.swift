@@ -11,16 +11,24 @@ import UIKit
 class FleetSetupViewController: UIViewController {
     
     var fleetViewController: FleetViewController?
-    
-    
     var player = Player(ownFleet: Fleet.generateFleet(), name: "Player 1", opponentFleet: nil)
     var CPU = Player(ownFleet: Fleet.generateFleet(), name: "CPU", opponentFleet: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         player.opponentFleet = CPU.ownFleet
         CPU.opponentFleet = player.ownFleet
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        CPU.ownFleet = Fleet.generateFleet()
+        player.ownFleet = Fleet.generateFleet()
+        
+        fleetViewController!.collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

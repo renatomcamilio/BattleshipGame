@@ -47,6 +47,10 @@ class BattleViewController: UIViewController {
             fleetVC.battleDelegate = self
         } else if segue.identifier == "showBattleEndDashboard" {
             println("\(battle?.activePlayer!.name) won the game")
+            
+            let battleEndDashboardVC = segue.destinationViewController as BattleEndDashboardViewController
+            
+            battleEndDashboardVC.battleEndDelegate = self
         }
     }
     
@@ -92,6 +96,7 @@ class BattleViewController: UIViewController {
     @IBAction func giveUpWasPressed(sender: AnyObject) {
         // We should return the player to the initial screen
         // maybe define the opponent as winner, because the player is giving up
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        battle?.winner = battle?.opponent
+        self.performSegueWithIdentifier("showBattleEndDashboard", sender: self)
     }
 }

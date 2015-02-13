@@ -67,4 +67,14 @@ class Battle {
         }
     }
     
+    func resetBattle() {
+        opponent.shotsTaken = [Int]()
+        opponent.targetsHit = [Int]()
+        opponent.activeHits = [Int]()
+        
+        player.shotsTaken = [Int]()
+        player.targetsHit = [Int]()
+        player.activeHits = [Int]()
+    }
+    
 }
