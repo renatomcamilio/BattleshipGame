@@ -45,22 +45,10 @@ class BattleEndDashboardViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    @IBAction func exitWasPressed(sender: AnyObject) {
-        // tell the navigationViewController to go back to Initial Screen
-        (battleEndDelegate?.presentingViewController as UINavigationController).popToRootViewControllerAnimated(false)
-
-        // and dismiss all the presenting modals, so the player can see the initial screen
-        self.battleEndDelegate?.presentingViewController?.dismissViewControllerAnimated(false, nil)
-        self.dismissViewControllerAnimated(false, nil)
-    }
     
-    @IBAction func rematchWasPressed(sender: AnyObject) {
-        // reset the game so it'll clean the state of both player 1 and player 2 (CPU)
-        battle?.resetBattle()
-        
-        // dismiss the battle game board and also the battle end dashboard, back to Fleet setup
-        self.battleEndDelegate?.presentingViewController?.dismissViewControllerAnimated(false, nil)
-        self.dismissViewControllerAnimated(false, nil)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "rematchSegue" || segue.identifier == "exitSegue" {
+            battle?.resetBattle()
+        }
     }
 }

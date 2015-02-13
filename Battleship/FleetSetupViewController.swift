@@ -24,9 +24,6 @@ class FleetSetupViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-        CPU.ownFleet = Fleet.generateFleet()
-        player.ownFleet = Fleet.generateFleet()
         
         fleetViewController!.collectionView?.reloadData()
     }
@@ -50,12 +47,21 @@ class FleetSetupViewController: UIViewController {
             fleetVC.opponent = CPU
             fleetVC.mode = .Player
             self.fleetViewController = fleetVC
-            
         }
     }
     
     @IBAction func newFleetWasPressed(sender: AnyObject) {
         self.player.ownFleet = Fleet.generateFleet()
         self.fleetViewController?.refreshView()
+    }
+    
+    @IBAction func unwindWithRematch(segue: UIStoryboardSegue) {
+        
+        CPU.ownFleet = Fleet.generateFleet()
+        player.ownFleet = Fleet.generateFleet()
+        
+        fleetViewController!.collectionView?.reloadData()
+        
+        
     }
 }

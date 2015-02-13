@@ -17,12 +17,12 @@ class BattleViewController: UIViewController {
     @IBOutlet weak var opponentHealthLabel: UILabel!
     var soundBoatHit = AVAudioPlayer()
     var soundWaterHit = AVAudioPlayer()
-    
-    
+        
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
     var playerCollectionView: UICollectionView?
     
+
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
         var path = NSBundle.mainBundle().pathForResource(file, ofType:type)
         var url = NSURL.fileURLWithPath(path!)
@@ -31,7 +31,6 @@ class BattleViewController: UIViewController {
         audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
         return audioPlayer!
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
