@@ -13,6 +13,8 @@ class BattleViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var turnLabel: UILabel!
     @IBOutlet weak var opponentContainerView: UIView!
+    @IBOutlet weak var playerHealthLabel: UILabel!
+    @IBOutlet weak var opponentHealthLabel: UILabel!
     var soundBoatHit = AVAudioPlayer()
     var soundWaterHit = AVAudioPlayer()
     
@@ -73,9 +75,8 @@ class BattleViewController: UIViewController {
         
         // Description:
         
+        calculatePlayerHealth()
 
-
-        
         self.battle!.nextTurn({ isCPUPlayer in
             if isCPUPlayer {
                 var shotAt = self.battle!.activePlayer?.calculateBestTargetToShootAt()
@@ -84,6 +85,8 @@ class BattleViewController: UIViewController {
                 self.playerSelectedCell(CPUTarget)
                 
                 self.playerCollectionView?.reloadData()
+                
+                
             } else {
                 var shotAt = self.battle!.activePlayer?.shotsTaken.last
                 var targetPositions = self.battle!.activePlayer!.opponentFleet!.takenPositions
@@ -92,6 +95,7 @@ class BattleViewController: UIViewController {
                 } else {
                     self.soundWaterHit.play()
                 }
+                
             }
         })
 
@@ -143,6 +147,15 @@ class BattleViewController: UIViewController {
 
     }
 
-
+    func calculatePlayerHealth() {
+        var playerInitialHealth = self.battle?.player.ownFleet.takenPositions.count
+        var playerHits = self.battle?.opponent.targetsHit.count
+        var playerHealth = Int(100 - ((Double(playerHits!) / Double(playerInitialHealth!)) * 100))
+        var opponentInitialHealth = self.battle?.opponent.ownFleet.takenPositions.count
+        var opponentHits = self.battle?.player.targetsHit.count
+        var opponentHealth = Int(100 - ((Double(opponentHits!) / Double(opponentInitialHealth!)) * 100 ))
+        playerHealthLabel.text = "Player Health: \(playerHealth)%"
+        opponentHealthLabel.text = "CPU Health: \(opponentHealth)%"
+    }
     
 }

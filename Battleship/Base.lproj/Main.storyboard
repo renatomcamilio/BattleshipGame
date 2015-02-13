@@ -221,9 +221,21 @@
                                     <action selector="giveUpWasPressed:" destination="WJv-cG-q9N" eventType="touchUpInside" id="TdU-qR-N5k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player turn" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-gf-Loq">
-                                <rect key="frame" x="501" y="48" width="83" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Player turn" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-gf-Loq">
+                                <rect key="frame" x="501" y="47" width="83" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Health: 100%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGM-B9-q0J">
+                                <rect key="frame" x="149" y="94" width="115" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CPU Health: 100%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qkr-21-I35">
+                                <rect key="frame" x="149" y="113" width="106" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -231,17 +243,31 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="skB-PQ-6QW" firstAttribute="top" secondItem="dMS-et-neU" secondAttribute="bottom" id="5eu-3u-czu"/>
+                            <constraint firstItem="nGM-B9-q0J" firstAttribute="leading" secondItem="Soy-2e-WgH" secondAttribute="leadingMargin" id="Q7s-hE-4WB"/>
                             <constraint firstItem="0ds-SR-VYZ" firstAttribute="top" secondItem="d5X-qm-2D7" secondAttribute="bottom" constant="20" id="VJF-DV-0iK"/>
                             <constraint firstItem="d5X-qm-2D7" firstAttribute="top" secondItem="hjm-oX-9wS" secondAttribute="bottom" constant="23" id="WFL-i3-5oO"/>
+                            <constraint firstItem="nGM-B9-q0J" firstAttribute="leading" secondItem="d5X-qm-2D7" secondAttribute="leading" id="Yo6-v7-EHJ"/>
+                            <constraint firstItem="Qkr-21-I35" firstAttribute="top" secondItem="nGM-B9-q0J" secondAttribute="bottom" constant="4" id="eYV-ik-oOF"/>
                             <constraint firstItem="hjm-oX-9wS" firstAttribute="trailing" secondItem="d5X-qm-2D7" secondAttribute="trailing" id="egc-Mq-wcI"/>
+                            <constraint firstItem="hjm-oX-9wS" firstAttribute="top" secondItem="nGM-B9-q0J" secondAttribute="top" id="ha3-JZ-S4H"/>
+                            <constraint firstItem="nGM-B9-q0J" firstAttribute="leading" secondItem="Qkr-21-I35" secondAttribute="leading" id="hbJ-YN-4s2"/>
                             <constraint firstItem="Yzu-gf-Loq" firstAttribute="top" secondItem="skB-PQ-6QW" secondAttribute="bottom" constant="7.5" id="hhM-Uk-A2g"/>
                             <constraint firstItem="skB-PQ-6QW" firstAttribute="trailing" secondItem="Soy-2e-WgH" secondAttribute="trailingMargin" id="mPv-EY-Wx8"/>
                             <constraint firstAttribute="centerX" secondItem="d5X-qm-2D7" secondAttribute="centerX" id="mhG-1h-Ml8"/>
+                            <constraint firstItem="Qkr-21-I35" firstAttribute="leading" secondItem="Soy-2e-WgH" secondAttribute="leadingMargin" id="r9Y-hp-hou"/>
                             <constraint firstItem="Yzu-gf-Loq" firstAttribute="trailing" secondItem="skB-PQ-6QW" secondAttribute="trailing" id="x57-nP-7x1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="r9Y-hp-hou"/>
+                                <exclude reference="Q7s-hE-4WB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="opponentContainerView" destination="d5X-qm-2D7" id="JLM-Jq-iAy"/>
+                        <outlet property="opponentHealthLabel" destination="Qkr-21-I35" id="bbE-f7-acL"/>
+                        <outlet property="playerHealthLabel" destination="nGM-B9-q0J" id="lzX-Xa-0FZ"/>
                         <outlet property="roundLabel" destination="skB-PQ-6QW" id="Kjb-7v-qto"/>
                         <outlet property="turnLabel" destination="Yzu-gf-Loq" id="YD0-fI-NSd"/>
                     </connections>
