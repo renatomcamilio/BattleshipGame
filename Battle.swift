@@ -46,7 +46,7 @@ class Battle {
             turnHandler(true)
         } else {
             self.activePlayer = self.player
-            turnHandler(true)
+            turnHandler(false)
         }
     }
     

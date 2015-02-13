@@ -17,7 +17,9 @@ class BattleViewController: UIViewController {
     @IBOutlet weak var opponentHealthLabel: UILabel!
     var soundBoatHit = AVAudioPlayer()
     var soundWaterHit = AVAudioPlayer()
-        
+    var soundWinner = AVAudioPlayer()
+    
+    
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
     var playerCollectionView: UICollectionView?
