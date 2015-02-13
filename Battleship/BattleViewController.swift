@@ -52,9 +52,9 @@ class BattleViewController: UIViewController {
     func prepareForNextTurn() {
         self.battle!.nextTurn({ isCPUPlayer in
             if isCPUPlayer {
-                var CPUTarget = NSIndexPath(forItem: Int(arc4random_uniform(UInt32(100))), inSection: 0)
+                var shotAt = self.battle!.activePlayer?.calculateBestTargetToShootAt()
+                var CPUTarget = NSIndexPath(forItem: shotAt!, inSection: 0)
                 
-                // try that target out
                 self.playerSelectedCell(CPUTarget)
                 
                 self.playerCollectionView?.reloadData()
@@ -63,43 +63,10 @@ class BattleViewController: UIViewController {
         
         self.roundLabel.text = "Round: \(String(self.battle!.round))"
         self.turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
-        
-        // Update active player
-        if self.battle!.activePlayer === self.battle!.player {
-            self.battle!.activePlayer = self.battle!.opponent
-            self.CPUTakeTurn()
-
-        } else {
-            self.battle!.activePlayer = self.battle!.player
-            
-        }
-        //opponentCollectionView?.reloadData()
-
-        // Update the collection views - load active player fleet and his opponents fleet
-        
-        // Reqeust player to take a turn: add UILabel "Please select a target"
-    }
-    
-    func CPUTakeTurn() {
-        // it gets its opponent's fleet
-        // generate a random target
-        
-        if let b = battle {
-            var shootAt = b.activePlayer?.calculateBestTargetToShootAt()
-            println("Shots Taken: \(b.activePlayer?.shotsTaken)")
-            println("Opponent Positions: \(b.activePlayer?.opponentFleet?.takenPositions)")
-            println("Targets Hit: \(b.activePlayer?.targetsHit)")
-            println("Active Hits: \(b.activePlayer?.activeHits)")
-            println("Shoot at: \(shootAt)")
-            
-            b.takeShot(shootAt!, player: b.activePlayer!)
-            
-            prepareForNextTurn()
-        }
     }
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        self.battle?.takeShot(indexPath.item, player: self.battle!.activePlayer!)
+        self.battle?.takeShot(indexPath, player: self.battle!.activePlayer!)
         self.prepareForNextTurn()
     }
     

@@ -44,7 +44,9 @@ class Battle {
         }
     }
     
-    func takeShot(index: Int, player: Player) {
+    func takeShot(indexPath: NSIndexPath, player: Player) {
+        let index = indexPath.item
+        
         player.shotsTaken.append(index)
         
         println("shooting at \(player.opponentFleet?.takenPositions)")
