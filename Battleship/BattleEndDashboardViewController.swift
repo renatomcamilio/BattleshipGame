@@ -10,24 +10,34 @@ import UIKit
 
 class BattleEndDashboardViewController: UIViewController {
     @IBOutlet weak var winnerLabel: UILabel!
-    @IBOutlet weak var playerStatsLabel: UILabel!
+    @IBOutlet weak var winnerStatsLabel: UILabel!
+    @IBOutlet weak var loserLabel: UILabel!
+    @IBOutlet weak var loserStatsLabel: UILabel!
     var battleEndDelegate: BattleViewController? // Later on create a protocol to situations like these
     
     var battle: Battle?
     var winner: Player?
+    var loser: Player?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         battle = battleEndDelegate!.battle
         winner = battle!.winner!
+        
+        // the loser is set based on the winner.
+        loser = battle?.winner! === battle?.opponent ? battle?.player : battle?.opponent
+        
         winnerLabel.text = "\(winner!.name) wins!"
-        playerStatsLabel.text = playerStats()
+        winnerStatsLabel.text = playerStats(winner!)
+        
+        loserLabel.text = "\(loser!.name)"
+        loserStatsLabel.text = playerStats(loser!)
     }
     
-    func playerStats() -> String {
-        var hits = "Hits: \(winner!.targetsHit.count)/\(battle!.round)"
-        var accuracy = "Accuracy: \(Int(Double(winner!.targetsHit.count) / Double(battle!.round) * 100))%"
+    func playerStats(player: Player) -> String {
+        var hits = "Hits: \(player.targetsHit.count)/\(battle!.round)"
+        var accuracy = "Accuracy: \(Int(Double(player.targetsHit.count) / Double(battle!.round) * 100))%"
         
         return join("\n", [hits, accuracy])
     }

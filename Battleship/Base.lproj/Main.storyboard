@@ -298,21 +298,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 wins!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvm-Cg-qty">
-                                <rect key="frame" x="16" y="160" width="568" height="36"/>
+                                <rect key="frame" x="16" y="84" width="568" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-BG-y3M">
-                                <rect key="frame" x="16" y="229" width="568" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CPU " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Og-l0-skZ">
+                                <rect key="frame" x="16" y="227" width="568" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvn-D8-WWz">
+                                <rect key="frame" x="16" y="259" width="568" height="36"/>
                                 <string key="text">Hits: 17/56
 Accuracy: 34%</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjj-WP-0FL">
-                                <rect key="frame" x="196" y="401" width="100" height="38"/>
+                                <rect key="frame" x="196" y="400" width="100" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Exit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -322,7 +328,7 @@ Accuracy: 34%</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Kl-FI-3hT">
-                                <rect key="frame" x="304" y="401" width="100" height="38"/>
+                                <rect key="frame" x="304" y="400" width="100" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="2OI-Ov-xJp"/>
                                 </constraints>
@@ -334,21 +340,35 @@ Accuracy: 34%</string>
                                     <action selector="rematchWasPressed:" destination="vVR-ux-jc7" eventType="touchUpInside" id="j6r-Js-92T"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-BG-y3M">
+                                <rect key="frame" x="16" y="128" width="568" height="43"/>
+                                <string key="text">Hits: 17/56
+Accuracy: 34%</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vvm-Cg-qty" firstAttribute="leading" secondItem="YdL-Ff-jzI" secondAttribute="leadingMargin" id="5dD-T6-qgu"/>
                             <constraint firstAttribute="centerX" secondItem="3Kl-FI-3hT" secondAttribute="centerX" constant="-54" id="6ux-Xe-Nrc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CVq-BG-y3M" secondAttribute="trailing" id="DZE-je-4qK"/>
+                            <constraint firstItem="wvn-D8-WWz" firstAttribute="top" secondItem="7Og-l0-skZ" secondAttribute="bottom" constant="8" id="DlX-vx-tZg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Og-l0-skZ" secondAttribute="trailing" id="EDY-uG-tce"/>
                             <constraint firstItem="3Kl-FI-3hT" firstAttribute="leading" secondItem="fjj-WP-0FL" secondAttribute="trailing" constant="8" id="Hir-eN-FBB"/>
-                            <constraint firstItem="CVq-BG-y3M" firstAttribute="top" secondItem="Vvm-Cg-qty" secondAttribute="bottom" constant="33" id="Itn-Pi-vca"/>
+                            <constraint firstItem="CVq-BG-y3M" firstAttribute="top" secondItem="Vvm-Cg-qty" secondAttribute="bottom" constant="8" id="Itn-Pi-vca"/>
                             <constraint firstItem="3Kl-FI-3hT" firstAttribute="width" secondItem="YdL-Ff-jzI" secondAttribute="width" id="KIt-wB-RBt"/>
                             <constraint firstItem="3Kl-FI-3hT" firstAttribute="top" secondItem="fjj-WP-0FL" secondAttribute="top" id="R0O-tx-iM0"/>
                             <constraint firstItem="3Kl-FI-3hT" firstAttribute="width" secondItem="fjj-WP-0FL" secondAttribute="width" id="VHb-Ee-n5W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vvm-Cg-qty" secondAttribute="trailing" id="ecR-5m-Qhs"/>
-                            <constraint firstItem="Vvm-Cg-qty" firstAttribute="top" secondItem="vI4-oX-C66" secondAttribute="bottom" constant="140" id="eoY-Ah-Q3g"/>
+                            <constraint firstItem="Vvm-Cg-qty" firstAttribute="top" secondItem="vI4-oX-C66" secondAttribute="bottom" constant="64" id="eoY-Ah-Q3g"/>
+                            <constraint firstItem="wvn-D8-WWz" firstAttribute="leading" secondItem="YdL-Ff-jzI" secondAttribute="leadingMargin" id="hH3-5L-IrQ"/>
                             <constraint firstItem="CVq-BG-y3M" firstAttribute="leading" secondItem="YdL-Ff-jzI" secondAttribute="leadingMargin" id="isv-Is-sxf"/>
-                            <constraint firstAttribute="centerY" secondItem="3Kl-FI-3hT" secondAttribute="centerY" constant="-120" id="uqp-Wi-kcL"/>
+                            <constraint firstItem="7Og-l0-skZ" firstAttribute="top" secondItem="CVq-BG-y3M" secondAttribute="bottom" constant="56" id="jIM-Ys-Sze"/>
+                            <constraint firstItem="wvn-D8-WWz" firstAttribute="trailing" secondItem="YdL-Ff-jzI" secondAttribute="trailingMargin" id="k2D-Rp-BCy"/>
+                            <constraint firstItem="7Og-l0-skZ" firstAttribute="leading" secondItem="YdL-Ff-jzI" secondAttribute="leadingMargin" id="uhr-rU-FeZ"/>
+                            <constraint firstAttribute="centerY" secondItem="3Kl-FI-3hT" secondAttribute="centerY" constant="-119" id="uqp-Wi-kcL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -357,8 +377,10 @@ Accuracy: 34%</string>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="playerStatsLabel" destination="CVq-BG-y3M" id="gy4-eo-3It"/>
+                        <outlet property="loserLabel" destination="7Og-l0-skZ" id="5Kk-wq-sFC"/>
+                        <outlet property="loserStatsLabel" destination="wvn-D8-WWz" id="ZiN-1w-LFW"/>
                         <outlet property="winnerLabel" destination="Vvm-Cg-qty" id="nbg-CE-6cO"/>
+                        <outlet property="winnerStatsLabel" destination="CVq-BG-y3M" id="jgj-nO-jMr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWh-b7-PS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
