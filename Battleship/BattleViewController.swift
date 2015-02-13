@@ -7,17 +7,34 @@
 //
 
 import UIKit
+import AVFoundation
 
 class BattleViewController: UIViewController {
     @IBOutlet weak var roundLabel: UILabel!
     @IBOutlet weak var turnLabel: UILabel!
     @IBOutlet weak var opponentContainerView: UIView!
+    var soundBoatHit = AVAudioPlayer()
+    var soundWaterHit = AVAudioPlayer()
+    
     
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
     var playerCollectionView: UICollectionView?
+    
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
+        var path = NSBundle.mainBundle().pathForResource(file, ofType:type)
+        var url = NSURL.fileURLWithPath(path!)
+        var error: NSError?
+        var audioPlayer:AVAudioPlayer?
+        audioPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        return audioPlayer!
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundBoatHit = self.setupAudioPlayerWithFile("soundEffectBoatHit", type:"caf")
+        soundWaterHit = self.setupAudioPlayerWithFile("soundEffectWaterHit", type:"caf")
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,17 +72,8 @@ class BattleViewController: UIViewController {
         // TODO;"DOTO" - Mike :)
         
         // Description:
-        // Set the "focus" to  activePlayer fleet and "blur" its opponent's fleet
-        //
-        // My advice is to have one of that "Front UIView" in the opponent's fleet, 
-        // and by default, the highlighted fleet is the activePlayer, which means that
-        // it doesn't have any layer/view over it
         
-        // Setup view for opponentContainerView animation
-//        var opponentContainerViewFront = UIView(frame: opponentContainerView.frame)
-//        opponentContainerView.addSubview(opponentContainerViewFront)
-//        opponentContainerViewFront.backgroundColor = UIColor.blackColor()
-//        opponentContainerViewFront.center = CGPointMake(150.0, 150.0)
+
 
         
         self.battle!.nextTurn({ isCPUPlayer in
@@ -76,9 +84,16 @@ class BattleViewController: UIViewController {
                 self.playerSelectedCell(CPUTarget)
                 
                 self.playerCollectionView?.reloadData()
+            } else {
+                var shotAt = self.battle!.activePlayer?.shotsTaken.last
+                var targetPositions = self.battle!.activePlayer!.opponentFleet!.takenPositions
+                if contains(targetPositions, shotAt!) {
+                    self.soundBoatHit.play()
+                } else {
+                    self.soundWaterHit.play()
+                }
             }
         })
-        animateViews()
 
         self.roundLabel.text = "Round: \(String(self.battle!.round))"
         self.turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
@@ -88,6 +103,12 @@ class BattleViewController: UIViewController {
     
     func playerSelectedCell(indexPath: NSIndexPath) {
         self.battle?.takeShot(indexPath, player: self.battle!.activePlayer!)
+        
+        // If target hit, play hit sound
+        var targetPositions = self.battle!.activePlayer!.opponentFleet!.takenPositions
+        
+
+        
         self.prepareForNextTurn()
     }
     
@@ -121,6 +142,7 @@ class BattleViewController: UIViewController {
         })
 
     }
+
 
     
 }
