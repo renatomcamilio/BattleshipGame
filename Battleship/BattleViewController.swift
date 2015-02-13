@@ -16,7 +16,6 @@ class BattleViewController: UIViewController {
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
     var playerCollectionView: UICollectionView?
-    var showingBack = true
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -100,11 +99,6 @@ class BattleViewController: UIViewController {
     }
     
     func animateViews() {
-        // Setup views for animation
-        // The TRICK - add two blank views above the playerContainerView as subviews.  The animation then flips between them.
-        // Since these subviews are blank, it then animates the container view.
-        
-        // TO DO - swap out the content of the collection views.  This should be done as the players take turns along with the animation.
         
         // Setup view for opponentContainerView animation
         var opponentContainerViewFront = UIView(frame: self.opponentContainerView.frame)
@@ -112,15 +106,20 @@ class BattleViewController: UIViewController {
         self.opponentContainerView.addSubview(opponentContainerViewFront)
         self.opponentContainerView.addSubview(opponentContainerViewBack)
         
-        // Perform animation
-        if (showingBack) {
-            UIView.transitionFromView(opponentContainerViewBack, toView: opponentContainerViewFront, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromBottom, completion: nil)
-            showingBack = false
-        } else {
+        let views = (frontView: opponentContainerViewFront, backView: opponentContainerViewBack)
+        let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
+        UIView.transitionWithView(self.opponentContainerView, duration: 0.5, options: transitionOptions, animations: {
+            // remove the front object...
+            views.frontView.removeFromSuperview()
+            
+            // ... and add the other object
+            self.opponentContainerView.addSubview(views.backView)
+            
+            }, completion: { finished in
+                // any code entered here will be applied
+                // .once the animation has completed
+        })
 
-            UIView.transitionFromView(opponentContainerViewFront, toView: opponentContainerViewBack, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromTop, completion: nil)
-            showingBack = true
-        }
     }
 
     
