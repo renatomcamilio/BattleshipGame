@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27135EF71A8E97BC00ABC567 /* winningsound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27135EF61A8E97BC00ABC567 /* winningsound.caf */; };
 		2769E3CE1A8B0F42009F1D8B /* ParseAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */; };
 		27A7CE9E1A8A9F70000B97D0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */; };
 		27A7CEA01A8A9F7A000B97D0 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */; };
@@ -27,7 +28,6 @@
 		27A7CEC01A8AA0CF000B97D0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A7CEBF1A8AA0CF000B97D0 /* libz.dylib */; };
 		27A7CEC21A8AA0E0000B97D0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A7CEC11A8AA0E0000B97D0 /* libsqlite3.dylib */; };
 		27A7CEC71A8AD7EF000B97D0 /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A7CEC61A8AD7EF000B97D0 /* AddUserViewController.swift */; };
-		27135EF71A8E97BC00ABC567 /* winningsound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27135EF61A8E97BC00ABC567 /* winningsound.caf */; };
 		27B9CADB1A8DC2D10020037B /* soundEffectBoatHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */; };
 		27B9CADC1A8DC2D10020037B /* soundEffectWaterHit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */; };
 		27B9CADE1A8DC3F70020037B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B9CADD1A8DC3F70020037B /* AVFoundation.framework */; };
@@ -54,6 +54,7 @@
 		88B6D0531A895DEA002B6337 /* Fleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0521A895DEA002B6337 /* Fleet.swift */; };
 		88B6D0551A895EAE002B6337 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0541A895EAE002B6337 /* Player.swift */; };
 		88B6D0571A895EF2002B6337 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D0561A895EF2002B6337 /* Game.swift */; };
+		88C1A2391A92768D009D12E0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C1A2381A92768D009D12E0 /* APIKeys.plist */; };
 		88FFBAEF1A8C550B00B66EE7 /* FleetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27135EF61A8E97BC00ABC567 /* winningsound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningsound.caf; sourceTree = "<group>"; };
 		2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIController.swift; sourceTree = "<group>"; };
 		27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		27A7CEC11A8AA0E0000B97D0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		27A7CEC31A8AA1CB000B97D0 /* Battleship-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Battleship-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		27A7CEC61A8AD7EF000B97D0 /* AddUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
-		27135EF61A8E97BC00ABC567 /* winningsound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningsound.caf; sourceTree = "<group>"; };
 		27B9CAD91A8DC2D10020037B /* soundEffectBoatHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEffectBoatHit.caf; sourceTree = "<group>"; };
 		27B9CADA1A8DC2D10020037B /* soundEffectWaterHit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = soundEffectWaterHit.caf; sourceTree = "<group>"; };
 		27B9CADD1A8DC3F70020037B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +122,7 @@
 		88B6D0521A895DEA002B6337 /* Fleet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
 		88B6D0541A895EAE002B6337 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		88B6D0561A895EF2002B6337 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		88C1A2381A92768D009D12E0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FleetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 			children = (
 				27A7CEC11A8AA0E0000B97D0 /* libsqlite3.dylib */,
 				27A7CEBF1A8AA0CF000B97D0 /* libz.dylib */,
+				27B9CADD1A8DC3F70020037B /* AVFoundation.framework */,
 				27A7CEBD1A8AA0C3000B97D0 /* SystemConfiguration.framework */,
 				27A7CEBB1A8AA0B9000B97D0 /* StoreKit.framework */,
 				27A7CEB91A8AA0AF000B97D0 /* Security.framework */,
@@ -215,12 +218,12 @@
 		884B388D1A86D38C00347AD9 = {
 			isa = PBXGroup;
 			children = (
-				27B9CADD1A8DC3F70020037B /* AVFoundation.framework */,
+				88C1A2381A92768D009D12E0 /* APIKeys.plist */,
 				88B6D04D1A894FD1002B6337 /* MyPlayground.playground */,
-				27A7CEA11A8AA02F000B97D0 /* Frameworks */,
 				884B38981A86D38D00347AD9 /* Battleship */,
 				884B38AE1A86D38D00347AD9 /* BattleshipTests */,
 				884B38971A86D38D00347AD9 /* Products */,
+				27A7CEA11A8AA02F000B97D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -358,6 +361,7 @@
 				TargetAttributes = {
 					884B38951A86D38D00347AD9 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = EK4C4R4CVX;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -403,6 +407,7 @@
 				889DF0941A889C2900442282 /* 01-initial-screen.jpg in Resources */,
 				884B38A61A86D38D00347AD9 /* LaunchScreen.xib in Resources */,
 				889DF08E1A889AFF00442282 /* 02-select-game-mode.jpg in Resources */,
+				88C1A2391A92768D009D12E0 /* APIKeys.plist in Resources */,
 				27B9CADB1A8DC2D10020037B /* soundEffectBoatHit.caf in Resources */,
 				884B38A31A86D38D00347AD9 /* Images.xcassets in Resources */,
 				889DF0911A889AFF00442282 /* 05-winner-loser.jpg in Resources */,
@@ -436,7 +441,6 @@
 				884C94471A8D79340028D186 /* HelperFunctions.swift in Sources */,
 				88B6D0551A895EAE002B6337 /* Player.swift in Sources */,
 				27A7CEA01A8A9F7A000B97D0 /* APIKeys.swift in Sources */,
-				88B6D04F1A895CFF002B6337 /* Square.swift in Sources */,
 				884C94491A8D9F830028D186 /* BattleEndDashboardViewController.swift in Sources */,
 				88B6D0511A895DBD002B6337 /* Boat.swift in Sources */,
 				88FFBAEF1A8C550B00B66EE7 /* FleetViewController.swift in Sources */,
@@ -565,7 +569,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Reining (VYMVB8G427)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.6.2",
@@ -573,7 +578,7 @@
 				INFOPLIST_FILE = Battleship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7d1cef7e-8245-454f-ad40-aca34c8b0dd2";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Battleship-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -585,7 +590,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Reining (VYMVB8G427)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/parse-library-1.6.2",
@@ -593,6 +599,7 @@
 				INFOPLIST_FILE = Battleship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Battleship-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
