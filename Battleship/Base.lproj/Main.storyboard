@@ -68,8 +68,77 @@
                     <view key="view" contentMode="scaleToFill" id="vvG-F1-jKW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNf-Wo-zZU">
+                                <rect key="frame" x="66" y="114" width="133" height="30"/>
+                                <state key="normal" title="Login Existing User">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginExistingUserButtonPressed:" destination="Xw7-OZ-nU0" eventType="touchUpInside" id="LAX-fY-McG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMi-Z7-zQF">
+                                <rect key="frame" x="66" y="154" width="100" height="30"/>
+                                <state key="normal" title="Add New User">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewUserButtonPressed:" destination="Xw7-OZ-nU0" eventType="touchUpInside" id="mLm-mA-76X"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6br-m0-n9l">
+                                <rect key="frame" x="66" y="204" width="468" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-5W-f3B">
+                                <rect key="frame" x="66" y="254" width="468" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9X-N4-IQ5">
+                                <rect key="frame" x="66" y="304" width="468" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tu-2q-Oqu">
+                                <rect key="frame" x="240" y="354" width="120" height="30"/>
+                                <state key="normal" title="Signup New User">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signupNewUserButtonPressed:" destination="Xw7-OZ-nU0" eventType="touchUpInside" id="knt-9I-29Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yMi-Z7-zQF" firstAttribute="top" secondItem="fNf-Wo-zZU" secondAttribute="bottom" constant="10" id="0WE-f7-Cdl"/>
+                            <constraint firstItem="aX7-5W-f3B" firstAttribute="top" secondItem="6br-m0-n9l" secondAttribute="bottom" constant="20" id="1wG-pb-Imp"/>
+                            <constraint firstItem="m9X-N4-IQ5" firstAttribute="top" secondItem="aX7-5W-f3B" secondAttribute="bottom" constant="20" id="D6j-ze-Ej0"/>
+                            <constraint firstItem="m9X-N4-IQ5" firstAttribute="leading" secondItem="aX7-5W-f3B" secondAttribute="leading" id="GL2-BU-DaD"/>
+                            <constraint firstItem="7tu-2q-Oqu" firstAttribute="top" secondItem="m9X-N4-IQ5" secondAttribute="bottom" constant="20" id="K87-wI-wdr"/>
+                            <constraint firstItem="m9X-N4-IQ5" firstAttribute="leading" secondItem="6br-m0-n9l" secondAttribute="leading" id="NzJ-fZ-isF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6br-m0-n9l" secondAttribute="trailing" constant="50" id="Poa-dl-77A"/>
+                            <constraint firstItem="fNf-Wo-zZU" firstAttribute="leading" secondItem="vvG-F1-jKW" secondAttribute="leadingMargin" constant="50" id="TnS-Is-9cN"/>
+                            <constraint firstItem="aX7-5W-f3B" firstAttribute="width" secondItem="m9X-N4-IQ5" secondAttribute="width" id="ZFG-2j-gGt"/>
+                            <constraint firstItem="6br-m0-n9l" firstAttribute="top" secondItem="yMi-Z7-zQF" secondAttribute="bottom" constant="20" id="ZbP-g9-VkD"/>
+                            <constraint firstItem="fNf-Wo-zZU" firstAttribute="top" secondItem="RA7-6T-zpP" secondAttribute="bottom" constant="50" id="eP4-nu-Pyn"/>
+                            <constraint firstItem="aX7-5W-f3B" firstAttribute="width" secondItem="6br-m0-n9l" secondAttribute="width" id="ek5-cg-aGu"/>
+                            <constraint firstItem="fNf-Wo-zZU" firstAttribute="leading" secondItem="yMi-Z7-zQF" secondAttribute="leading" id="jKt-AV-oZZ"/>
+                            <constraint firstAttribute="centerX" secondItem="7tu-2q-Oqu" secondAttribute="centerX" id="q4J-Si-PHZ"/>
+                            <constraint firstItem="6br-m0-n9l" firstAttribute="leading" secondItem="vvG-F1-jKW" secondAttribute="leadingMargin" constant="50" id="wXV-tU-sGi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addEmailTextField" destination="aX7-5W-f3B" id="I37-jF-1LQ"/>
+                        <outlet property="addNewUserButton" destination="yMi-Z7-zQF" id="T1v-nR-asI"/>
+                        <outlet property="addPasswordTextField" destination="m9X-N4-IQ5" id="akM-gb-yTg"/>
+                        <outlet property="addUsernameTextField" destination="6br-m0-n9l" id="Ov1-yN-etd"/>
+                        <outlet property="loginExistingUserButton" destination="fNf-Wo-zZU" id="F2y-5V-MWg"/>
+                        <outlet property="signupNewUserButton" destination="7tu-2q-Oqu" id="lM4-NL-B0d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llj-1u-ScM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
