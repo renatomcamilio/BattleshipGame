@@ -44,4 +44,28 @@ class SelectPlayer: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedUser = users[indexPath.row].username
+        // With destructive RED button
+        
+        let alertController = UIAlertController(title: "Selected Player", message: "Would you like to start a game with \(selectedUser)?", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            println(action)
+        }
+        alertController.addAction(cancelAction)
+        
+        let destroyAction = UIAlertAction(title: "Game on!", style: .Default) { (action) in
+            println(action)
+        }
+        alertController.addAction(destroyAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            // ...
+        }
+    }
+    
+    
+    
+    
 }
