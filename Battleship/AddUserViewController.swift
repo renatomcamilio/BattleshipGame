@@ -53,6 +53,13 @@ class AddUserViewController: UIViewController, UINavigationControllerDelegate, U
                     (user, error) in
                     // Capture user details on login
                     self.currentUser = PFUser.currentUser()
+                    self.userID = PFUser.currentUser().objectId!
+                    let alert = UIAlertController(title: "Login Success", message: "You are now logged in as \(self.currentUser!.username)", preferredStyle: .Alert)
+                    let action = UIAlertAction(title: "Awesome!", style: .Default) { (action: UIAlertAction!) -> Void in
+                    }
+                    alert.addAction(action)
+                    self.presentViewController(alert, animated: true, completion: nil)
+
                 }
             )
         }
