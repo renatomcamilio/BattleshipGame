@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		27135EF71A8E97BC00ABC567 /* winningsound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27135EF61A8E97BC00ABC567 /* winningsound.caf */; };
 		2769E3CE1A8B0F42009F1D8B /* ParseAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */; };
-		27A7CE9E1A8A9F70000B97D0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */; };
 		27A7CEA01A8A9F7A000B97D0 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */; };
 		27A7CEA81A8AA046000B97D0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A7CEA31A8AA046000B97D0 /* Bolts.framework */; };
 		27A7CEA91A8AA046000B97D0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A7CEA41A8AA046000B97D0 /* Parse.framework */; };
@@ -71,7 +70,6 @@
 /* Begin PBXFileReference section */
 		27135EF61A8E97BC00ABC567 /* winningsound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = winningsound.caf; sourceTree = "<group>"; };
 		2769E3CD1A8B0F42009F1D8B /* ParseAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIController.swift; sourceTree = "<group>"; };
-		27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		27A7CEA31A8AA046000B97D0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		27A7CEA41A8AA046000B97D0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -122,7 +120,7 @@
 		88B6D0521A895DEA002B6337 /* Fleet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fleet.swift; sourceTree = "<group>"; };
 		88B6D0541A895EAE002B6337 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		88B6D0561A895EF2002B6337 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		88C1A2381A92768D009D12E0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		88C1A2381A92768D009D12E0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = APIKeys.plist; path = ../APIKeys.plist; sourceTree = "<group>"; };
 		88FFBAEE1A8C550B00B66EE7 /* FleetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FleetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,7 +216,6 @@
 		884B388D1A86D38C00347AD9 = {
 			isa = PBXGroup;
 			children = (
-				88C1A2381A92768D009D12E0 /* APIKeys.plist */,
 				88B6D04D1A894FD1002B6337 /* MyPlayground.playground */,
 				884B38981A86D38D00347AD9 /* Battleship */,
 				884B38AE1A86D38D00347AD9 /* BattleshipTests */,
@@ -247,7 +244,7 @@
 				884B389B1A86D38D00347AD9 /* AppDelegate.swift */,
 				27A7CEC31A8AA1CB000B97D0 /* Battleship-Bridging-Header.h */,
 				27A7CE9F1A8A9F7A000B97D0 /* APIKeys.swift */,
-				27A7CE9D1A8A9F70000B97D0 /* APIKeys.plist */,
+				88C1A2381A92768D009D12E0 /* APIKeys.plist */,
 				884B38A21A86D38D00347AD9 /* Images.xcassets */,
 				884B38991A86D38D00347AD9 /* Supporting Files */,
 			);
@@ -399,7 +396,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				884B38A11A86D38D00347AD9 /* Main.storyboard in Resources */,
-				27A7CE9E1A8A9F70000B97D0 /* APIKeys.plist in Resources */,
 				889DF0921A889AFF00442282 /* 06-return-rematch.jpg in Resources */,
 				889DF0901A889AFF00442282 /* 04-battle-round.jpg in Resources */,
 				889DF08F1A889AFF00442282 /* 03-fleet-setup.jpg in Resources */,
