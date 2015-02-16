@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="1829" y="-378"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Select Game View Controller-->
         <scene sceneID="SFF-S3-RDo">
             <objects>
-                <viewController id="OQB-6F-mR4" customClass="MainViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OQB-6F-mR4" customClass="SelectGameViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p5q-Rd-EYf"/>
                         <viewControllerLayoutGuide type="bottom" id="q1e-qv-oOi"/>
@@ -88,18 +88,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KU-th-mNM">
-                                <rect key="frame" x="272" y="285" width="56" height="30"/>
-                                <state key="normal" title="vs. CPU">
+                                <rect key="frame" x="232" y="285" width="135" height="30"/>
+                                <state key="normal" title="Single Player Game">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="mj9-6T-iuG" kind="show" identifier="showFleetSetup" id="wtb-IY-aS2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7b-jl-o8V">
+                                <rect key="frame" x="239" y="323" width="121" height="30"/>
+                                <state key="normal" title="Multiplayer Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="s3A-06-KaR" kind="show" identifier="selectPlayer" id="8FR-iy-npP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="N7b-jl-o8V" firstAttribute="centerX" secondItem="7KU-th-mNM" secondAttribute="centerX" id="2OL-60-jok"/>
                             <constraint firstAttribute="centerY" secondItem="7KU-th-mNM" secondAttribute="centerY" id="QRg-97-kDC"/>
+                            <constraint firstItem="N7b-jl-o8V" firstAttribute="top" secondItem="7KU-th-mNM" secondAttribute="bottom" constant="8" id="a7e-uj-8Yg"/>
                             <constraint firstAttribute="centerX" secondItem="7KU-th-mNM" secondAttribute="centerX" id="nCs-lg-AV1"/>
                         </constraints>
                     </view>
@@ -107,6 +118,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LW4-KA-dPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1922" y="339"/>
+        </scene>
+        <!--Select Player-->
+        <scene sceneID="OE4-rY-CSu">
+            <objects>
+                <tableViewController id="s3A-06-KaR" customClass="SelectPlayer" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="d78-Tl-cpK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" textLabel="Syi-Rd-Sgj" style="IBUITableViewCellStyleDefault" id="XK5-kk-vcj">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XK5-kk-vcj" id="3Sk-Wd-5N2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Syi-Rd-Sgj">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="s3A-06-KaR" id="RLG-ii-oiK"/>
+                            <outlet property="delegate" destination="s3A-06-KaR" id="fVe-SQ-fhI"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyK-Hy-YpU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1922" y="1032"/>
         </scene>
         <!--Fleet Setup View Controller-->
         <scene sceneID="vET-Ek-Zl0">

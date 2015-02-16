@@ -17,10 +17,9 @@ class MainViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        
-        
-        
+
         var currentUser = PFUser.currentUser()
+
         if currentUser != nil {
             // Do stuff with the user
             loginButton.title = currentUser.username
