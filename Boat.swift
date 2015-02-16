@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 //(Aircraft carrier: 5), (Battleship: 4), (Cruiser: 3), (Destroyer: 2), (Submarine: 1)
 enum BoatSize: Int {
     case Submarine = 1
@@ -31,20 +32,32 @@ enum BoatDirection: Int {
 
 class Boat {
     let size: BoatSize
-    let color: UIColor
     var squares = [Int]()
     
-    init(size: BoatSize, squares: [Int]?, color: UIColor) {
+    init(size: BoatSize, squares: [Int]?) {
         self.size = size
+        
+        // We're only using generated boats, just calling it from inside initializer for convenience
         self.squares = squares ?? [Int]()
-        self.color = color
+        self.defineRandomBoatSquares()
     }
+    
+    // MARK: - Boat colors
+    func color() -> UIColor {
+        let boatColor = UIColor.orangeColor()
+        return boatColor.colorWithAlphaComponent(CGFloat(size.rawValue)/5.0)
+    }
+    // MARK: - Random generating Boat positions
     
     func defineRandomBoatSquares() {
         var boatSquares = [Int]()
         var direction = BoatDirection(rawValue: Int(arc4random_uniform(UInt32(2))))!
         
         populateSquares(direction)
+    }
+    
+    private func normalizeBoatPosition() {
+        self.squares = map(self.squares, { $0 - 1 })
     }
     
     private func populateSquares(direction: BoatDirection) {
@@ -56,8 +69,9 @@ class Boat {
             
             var normalizedPosition: Int
             var hasEnoughSquares: Bool
+            
             if direction == BoatDirection.Horizontal {
-                normalizedPosition = self.squares[0] > 10 ? self.squares[0] % 10 : self.squares[0]
+                normalizedPosition = self.squares[0] > 10 ? (self.squares[0] % 10 == 0 ? self.size.rawValue : self.squares[0] % 10) : self.squares[0]
 
                 if normalizedPosition > 0 && normalizedPosition < self.size.rawValue {
                     self.squares.append(self.squares.last! + direction.squareOffset())
@@ -65,7 +79,7 @@ class Boat {
                     self.squares.append(self.squares.last! - direction.squareOffset())
                 }
             } else {
-                normalizedPosition = self.squares[0] > 10 ? self.squares[0] / 10 : 1
+                normalizedPosition = self.squares[0] > 10 ? self.squares[0] / 10 : self.squares[0]
 
                 if normalizedPosition > 0 && normalizedPosition > self.size.rawValue {
                     self.squares.append(self.squares.last! - direction.squareOffset())
@@ -74,8 +88,9 @@ class Boat {
                 }
             }
             
-            
             populateSquares(direction)
+        } else {
+            normalizeBoatPosition()
         }
     }
 }

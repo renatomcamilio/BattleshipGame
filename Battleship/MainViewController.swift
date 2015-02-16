@@ -13,19 +13,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Add User button - programmatically - TO DO add to storyboard
-        button.frame = CGRectMake(120, 180, 120, 50)
-        button.setTitle("Add User", forState: UIControlState.Normal)
-        button.addTarget(self, action: "addUserButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {        
@@ -34,6 +25,10 @@ class MainViewController: UIViewController {
         } else if segue.identifier! == "showFleetSetup" {
 
         }
+    }
+    
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
+        
     }
 
     func addUserButtonPressed() {
