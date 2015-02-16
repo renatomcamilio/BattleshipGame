@@ -18,6 +18,13 @@ class SelectPlayer: UITableViewController {
             users.append(user as PFUser)
         }
         println(users.count)
+        
+        for (index, user) in enumerate(users) {
+            if user.objectId == PFUser.currentUser().objectId {
+                users.removeAtIndex(index)
+            }
+        }
+        
     }
     
     
