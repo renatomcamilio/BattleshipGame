@@ -11,10 +11,26 @@ import UIKit
 class MainViewController: UIViewController {
     let button: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
     
+    @IBOutlet weak var loginButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        
+        
+        
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            // Do stuff with the user
+            loginButton.title = currentUser.username
+        } else {
+            // Show the signup or login screen
+            loginButton.title = "Login"
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -22,8 +38,13 @@ class MainViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {        
         if segue.identifier! == "showGameMode" {
 
-        } else if segue.identifier! == "showFleetSetup" {
+        }
+        if segue.identifier! == "showFleetSetup" {
 
+        }
+        
+        if segue.identifier! == "showLogin" {
+            
         }
     }
     
@@ -31,10 +52,6 @@ class MainViewController: UIViewController {
         
     }
 
-    func addUserButtonPressed() {
-        let vc = AddUserViewController(nibName: nil, bundle: nil)
-        navigationController?.pushViewController(vc, animated: true)
-    }
     
     
 

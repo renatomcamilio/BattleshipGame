@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Ys-aH-CTp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Ys-aH-CTp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -42,11 +42,38 @@
                             <constraint firstAttribute="centerX" secondItem="lvX-h1-h2G" secondAttribute="centerX" id="k7s-GT-tlm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Ncf-5y-iUB"/>
+                    <navigationItem key="navigationItem" id="Ncf-5y-iUB">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="Hlg-r1-vxb">
+                            <connections>
+                                <segue destination="Xw7-OZ-nU0" kind="show" identifier="showLogin" id="dfM-JD-DYg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="loginButton" destination="Hlg-r1-vxb" id="YE0-fX-6f9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1190" y="339"/>
+        </scene>
+        <!--Add User View Controller-->
+        <scene sceneID="edG-xH-YDt">
+            <objects>
+                <viewController id="Xw7-OZ-nU0" customClass="AddUserViewController" customModule="Battleship" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RA7-6T-zpP"/>
+                        <viewControllerLayoutGuide type="bottom" id="luA-kS-B5u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vvG-F1-jKW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llj-1u-ScM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1829" y="-378"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="SFF-S3-RDo">
