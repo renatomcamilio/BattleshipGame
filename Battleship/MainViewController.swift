@@ -17,16 +17,22 @@ class MainViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-
-        var currentUser = PFUser.currentUser()
-
-        if currentUser != nil {
-            // Do stuff with the user
-            loginButton.title = currentUser.username
-        } else {
-            // Show the signup or login screen
-            loginButton.title = "Login"
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) { // 1
+            var currentUser = PFUser.currentUser()
+            dispatch_async(dispatch_get_main_queue()) { // 2
+                if currentUser != nil {
+                    // Do stuff with the user
+                    self.loginButton.title = currentUser.username
+                } else {
+                    // Show the signup or login screen
+                    self.loginButton.title = "Login"
+                }
+            }
         }
+
+        
+
+
     }
     
     
