@@ -78,10 +78,6 @@ class BattleViewController: UIViewController {
     
     
     func prepareForNextTurn() {
-        // TODO;"DOTO" - Mike :)
-        
-        // Description:
-        
         calculatePlayerHealth()
 
         self.battle!.nextTurn({ isCPUPlayer in
@@ -93,17 +89,6 @@ class BattleViewController: UIViewController {
                 self.playerSelectedCell(CPUTarget)
                 
                 self.playerCollectionView?.reloadData()
-                
-                
-            } else {
-                var shotAt = self.battle!.activePlayer.shotsTaken.last
-                var targetPositions = self.battle!.activePlayer.opponentFleet!.takenPositions
-                if contains(targetPositions, shotAt!) {
-                    self.soundBoatHit.play()
-                } else {
-                    self.soundWaterHit.play()
-                }
-                
             }
         })
 
@@ -114,7 +99,15 @@ class BattleViewController: UIViewController {
     
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        battle?.takeShot(indexPath, player: battle!.activePlayer)
+        battle?.takeShot(indexPath)
+        
+        var shotAt = self.battle!.activePlayer.shotsTaken.last!
+        var targetPositions = self.battle!.activePlayer.opponentFleet!.takenPositions
+        if contains(targetPositions, shotAt) {
+            self.soundBoatHit.play()
+        } else {
+            self.soundWaterHit.play()
+        }
         
         // before preparing to the next turn, it's a good idea to check if the game as a winner
         // which means that the game has ended

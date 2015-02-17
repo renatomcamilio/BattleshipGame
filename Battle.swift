@@ -27,25 +27,29 @@ class Battle: PFObject, PFSubclassing {
         turn = 1
         round = 1
         
-        let startingPlayerIndex = Int( arc4random_uniform( UInt32(2) ) )
+//        let startingPlayerIndex = Int( arc4random_uniform( UInt32(2) ) )
+        let startingPlayerIndex = 0
+
         activePlayer = players[startingPlayerIndex]
     }
     
-    func takeShot(indexPath: NSIndexPath, player: Player) {
+    func takeShot(indexPath: NSIndexPath) {
         let index = indexPath.item
         
-        player.shotsTaken.append(index)
+        activePlayer.shotsTaken.append(index)
         
-        println("shooting at \(player.opponentFleet!.takenPositions)")
+        println("shooting at \(activePlayer.opponentFleet!.takenPositions)")
         
-        if contains(player.opponentFleet!.takenPositions ?? [Int](), index) {
-            player.activeHits.append(index)
-            player.targetsHit.append(index)
+        if contains(activePlayer.opponentFleet!.takenPositions ?? [Int](), index) {
+            activePlayer.activeHits.append(index)
+            activePlayer.targetsHit.append(index)
             
             println("hit at \(index)")
         } else {
             println("missed at \(index)")
         }
+        
+        activePlayer.save()
     }
     
     func gameHasWinner() -> Bool {
