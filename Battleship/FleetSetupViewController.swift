@@ -11,15 +11,12 @@ import UIKit
 class FleetSetupViewController: UIViewController {
     
     var fleetViewController: FleetViewController?
-    var player = Player(ownFleet: Fleet.generateFleet(), name: "Player 1", opponentFleet: nil)
-    var CPU = Player(ownFleet: Fleet.generateFleet(), name: "CPU", opponentFleet: nil)
+    var player1: Player?
+    var player2: Player?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        player.opponentFleet = CPU.ownFleet
-        CPU.opponentFleet = player.ownFleet
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,30 +35,35 @@ class FleetSetupViewController: UIViewController {
             let newVC = segue.destinationViewController as BattleViewController
             
             // prepare to Battle!
-            var newBattle = Battle(player: player, opponent: CPU)
+            var newBattle = Battle(players: [player1!, player2!])
+            newBattle.save()
+            
             newVC.battle = newBattle
         } else if segue.identifier == "playerFleet" {
             let fleetVC = segue.destinationViewController as FleetViewController
             
-            fleetVC.player = player
-            fleetVC.opponent = CPU
+            let player1Fleet = Fleet.generateFleet()
+            let player2Fleet = Fleet.generateFleet()
+            
+            player1 = Player(ownFleet: player1Fleet, name: "Player 1", opponentFleet: player2Fleet)
+            player2 = Player(ownFleet: player2Fleet, name: "Player 2", opponentFleet: player1Fleet)
+            
+            fleetVC.player = player1
+            fleetVC.opponent = player2
             fleetVC.mode = .Player
             self.fleetViewController = fleetVC
         }
     }
     
     @IBAction func newFleetWasPressed(sender: AnyObject) {
-        self.player.ownFleet = Fleet.generateFleet()
+        self.player1!.ownFleet = Fleet.generateFleet()
         self.fleetViewController?.refreshView()
     }
     
     @IBAction func unwindWithRematch(segue: UIStoryboardSegue) {
-        
-        CPU.ownFleet = Fleet.generateFleet()
-        player.ownFleet = Fleet.generateFleet()
+        player2!.ownFleet = Fleet.generateFleet()
+        player1!.ownFleet = Fleet.generateFleet()
         
         fleetViewController!.collectionView?.reloadData()
-        
-        
     }
 }

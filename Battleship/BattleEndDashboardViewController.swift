@@ -26,7 +26,7 @@ class BattleEndDashboardViewController: UIViewController {
         winner = battle!.winner!
         
         // the loser is set based on the winner.
-        loser = battle?.winner! === battle?.opponent ? battle?.player : battle?.opponent
+        loser = battle?.winner! === battle?.player2 ? battle?.player1 : battle?.player2
         
         winnerLabel.text = "\(winner!.name) wins!"
         winnerStatsLabel.text = playerStats(winner!)
@@ -48,7 +48,7 @@ class BattleEndDashboardViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "rematchSegue" || segue.identifier == "exitSegue" {
-            battle?.resetBattle()
+            battle?.rematch()
         }
     }
 }

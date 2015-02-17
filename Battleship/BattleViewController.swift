@@ -19,7 +19,6 @@ class BattleViewController: UIViewController {
     var soundWaterHit = AVAudioPlayer()
     var soundWinner = AVAudioPlayer()
     
-    
     var battle: Battle?
     var opponentCollectionView: UICollectionView?
     var playerCollectionView: UICollectionView?
@@ -49,8 +48,8 @@ class BattleViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerFleet" {
             let fleetVC = segue.destinationViewController as FleetViewController
-            fleetVC.player = battle?.player
-            fleetVC.opponent = battle?.opponent
+            fleetVC.player = battle?.player1
+            fleetVC.opponent = battle?.player2
             fleetVC.mode = .Player
             
             self.playerCollectionView = fleetVC.collectionView
@@ -59,15 +58,15 @@ class BattleViewController: UIViewController {
         } else if segue.identifier == "opponentFleet" {
             let fleetVC = segue.destinationViewController as FleetViewController
             
-            fleetVC.player = battle?.opponent
-            fleetVC.opponent = battle?.player
+            fleetVC.player = battle?.player2
+            fleetVC.opponent = battle?.player1
             fleetVC.mode = .Opponent
             
             self.opponentCollectionView = fleetVC.collectionView
             
             fleetVC.battleDelegate = self
         } else if segue.identifier == "showBattleEndDashboard" {
-            println("\(battle?.activePlayer!.name) won the game")
+            println("\(battle?.activePlayer.name) won the game")
             
             let battleEndDashboardVC = segue.destinationViewController as BattleEndDashboardViewController
             
@@ -87,8 +86,8 @@ class BattleViewController: UIViewController {
 
         self.battle!.nextTurn({ isCPUPlayer in
             if isCPUPlayer {
-                var shotAt = self.battle!.activePlayer?.calculateBestTargetToShootAt()
-                var CPUTarget = NSIndexPath(forItem: shotAt!, inSection: 0)
+                var shotAt = self.battle!.activePlayer.calculateBestTargetToShootAt()
+                var CPUTarget = NSIndexPath(forItem: shotAt, inSection: 0)
                 
                 // CPU shoot at target
                 self.playerSelectedCell(CPUTarget)
@@ -97,8 +96,8 @@ class BattleViewController: UIViewController {
                 
                 
             } else {
-                var shotAt = self.battle!.activePlayer?.shotsTaken.last
-                var targetPositions = self.battle!.activePlayer!.opponentFleet!.takenPositions
+                var shotAt = self.battle!.activePlayer.shotsTaken.last
+                var targetPositions = self.battle!.activePlayer.opponentFleet!.takenPositions
                 if contains(targetPositions, shotAt!) {
                     self.soundBoatHit.play()
                 } else {
@@ -115,7 +114,7 @@ class BattleViewController: UIViewController {
     
     
     func playerSelectedCell(indexPath: NSIndexPath) {
-        battle?.takeShot(indexPath, player: battle!.activePlayer!)
+        battle?.takeShot(indexPath, player: battle!.activePlayer)
         
         // before preparing to the next turn, it's a good idea to check if the game as a winner
         // which means that the game has ended
@@ -131,7 +130,7 @@ class BattleViewController: UIViewController {
     @IBAction func giveUpWasPressed(sender: AnyObject) {
         // We should return the player to the initial screen
         // maybe define the opponent as winner, because the player is giving up
-        battle?.winner = battle?.opponent
+        battle?.winner = battle?.player2
         self.performSegueWithIdentifier("showBattleEndDashboard", sender: self)
     }
     
@@ -160,11 +159,11 @@ class BattleViewController: UIViewController {
     }
 
     func calculatePlayerHealth() {
-        var playerInitialHealth = self.battle?.player.ownFleet.takenPositions.count
-        var playerHits = self.battle?.opponent.targetsHit.count
+        var playerInitialHealth = self.battle?.player1.ownFleet.takenPositions.count
+        var playerHits = self.battle?.player2.targetsHit.count
         var playerHealth = Int(100 - ((Double(playerHits!) / Double(playerInitialHealth!)) * 100))
-        var opponentInitialHealth = self.battle?.opponent.ownFleet.takenPositions.count
-        var opponentHits = self.battle?.player.targetsHit.count
+        var opponentInitialHealth = self.battle?.player2.ownFleet.takenPositions.count
+        var opponentHits = self.battle?.player1.targetsHit.count
         var opponentHealth = Int(100 - ((Double(opponentHits!) / Double(opponentInitialHealth!)) * 100 ))
         playerHealthLabel.text = "Player Health: \(playerHealth)%"
         opponentHealthLabel.text = "CPU Health: \(opponentHealth)%"

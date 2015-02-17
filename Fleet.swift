@@ -9,12 +9,14 @@
 import UIKit
 
 
-class Fleet {
+class Fleet: PFObject, PFSubclassing {
     var boats: [Boat]
-    var takenPositions = [Int]()
+    @NSManaged var takenPositions: [Int]
     
     init(boats: [Boat]) {
         self.boats = boats
+        
+        super.init()
     }
     
     // MARK: - Fleet Generator
@@ -46,19 +48,19 @@ class Fleet {
         let cruiser = Boat(size: BoatSize.Cruiser, squares: nil)
         takenPositions += cruiser.squares
         
-        var destroyer = Boat(size: BoatSize.Destroyer, squares: nil)
+        let destroyer = Boat(size: BoatSize.Destroyer, squares: nil)
         takenPositions += destroyer.squares
         
-        var destroyer2 = Boat(size: BoatSize.Destroyer, squares: nil)
+        let destroyer2 = Boat(size: BoatSize.Destroyer, squares: nil)
         takenPositions += destroyer2.squares
         
-        var submarine = Boat(size: BoatSize.Submarine, squares: nil)
+        let submarine = Boat(size: BoatSize.Submarine, squares: nil)
         takenPositions += submarine.squares
         
-        var submarine2 = Boat(size: BoatSize.Submarine, squares: nil)
+        let submarine2 = Boat(size: BoatSize.Submarine, squares: nil)
         takenPositions += submarine2.squares
         
-        var fleet = Fleet(boats: [aircraftCarrier, battleship, cruiser, destroyer, destroyer2, submarine, submarine2])
+        let fleet = Fleet(boats: [aircraftCarrier, battleship, cruiser, destroyer, destroyer2, submarine, submarine2])
         fleet.takenPositions = takenPositions
         
         if itemsAreUniqueAndValid(takenPositions) { // if fleet is unique, return it
@@ -66,5 +68,14 @@ class Fleet {
         } else { // else, keep generating it until it's unique
             return generateFleet()
         }
+    }
+    
+    // MARK: - Parse
+    class func parseClassName() -> String! {
+        return "Fleet"
+    }
+    
+    override class func load() {
+        self.registerSubclass()
     }
 }

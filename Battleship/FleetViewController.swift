@@ -35,7 +35,6 @@ class FleetViewController: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 100
     }
@@ -46,9 +45,7 @@ class FleetViewController: UICollectionViewController {
 
         let opponentShots = opponent?.shotsTaken ?? [Int]()// Both player and opponent fleet should be aware of its opponent shots, so you prepare your fleet based on those shots (if any)
         var possibleBoat: Boat?
-        
   
-        
         if contains(opponentShots, index) {// opponent own fleet logic (with hitBoat and miss)
             if contains(player?.ownFleet.takenPositions ?? [Int](), index) {// and if the player has placed any boats in here
                 cell.state = .HitBoat // then opponent has shot a boat!

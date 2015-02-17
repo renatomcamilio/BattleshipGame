@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Battle: PFObject, PFSubclassing {
+class BattleParse: PFObject, PFSubclassing {
     
     @NSManaged var player1: Player
     @NSManaged var player2: Player
@@ -16,19 +16,32 @@ class Battle: PFObject, PFSubclassing {
     @NSManaged var winner: Player?
     @NSManaged var turn: Int
     @NSManaged var round: Int
+ 
     
+    class func parseClassName() -> String! {
+        return "BattleParse"
+    }
+    
+    override class func load() {
+        self.registerSubclass()
+    }
     
     init(players: [Player]) {
         super.init()
-        
-        player1 = players.first!
-        player2 = players.last!
-        
-        turn = 1
-        round = 1
+
+        self.player1 = players.first!
+        self.player2 = players.last!
         
         let startingPlayerIndex = Int( arc4random_uniform( UInt32(2) ) )
-        activePlayer = players[startingPlayerIndex]
+        self.activePlayer = players[startingPlayerIndex]
+        
+        self.saveInBackgroundWithBlock { (success: Bool, error: NSError!) -> Void in
+            if success {
+                println("Success: \(self)")
+            } else {
+                println("Error: \(error.userInfo!)")
+            }
+        }
     }
     
     func takeShot(indexPath: NSIndexPath, player: Player) {
@@ -36,9 +49,9 @@ class Battle: PFObject, PFSubclassing {
         
         player.shotsTaken.append(index)
         
-        println("shooting at \(player.opponentFleet!.takenPositions)")
+        println("shooting at \(player.opponentFleet?.takenPositions)")
         
-        if contains(player.opponentFleet!.takenPositions ?? [Int](), index) {
+        if contains(player.opponentFleet?.takenPositions ?? [Int](), index) {
             player.activeHits.append(index)
             player.targetsHit.append(index)
             
@@ -48,16 +61,6 @@ class Battle: PFObject, PFSubclassing {
         }
     }
     
-    func gameHasWinner() -> Bool {
-        var isThereAWinner = activePlayer.targetsHit.count == activePlayer.opponentFleet!.takenPositions.count
-        
-        if isThereAWinner {
-            winner = activePlayer
-        }
-        
-        return isThereAWinner
-    }
-    
     func nextTurn(turnHandler: (Bool) -> (Void)) {
         if turn == 2 {
             round += 1
@@ -65,6 +68,10 @@ class Battle: PFObject, PFSubclassing {
         } else {
             turn += 1
         }
+        
+        // we'll need a BattleTurn object on Parse, which contains:
+        //  - battle_id related to both players like shotsTaken, targetsHit?, takenPositions
+        // the last line for BattleTurn represents the current turn
         
         // Update active player in game and send it to Parse
         if self.activePlayer === self.player1 {
@@ -78,6 +85,16 @@ class Battle: PFObject, PFSubclassing {
         // Save Parse Object in background
     }
     
+    func gameHasWinner() -> Bool {
+        var isThereAWinner = activePlayer.targetsHit.count == activePlayer.opponentFleet?.takenPositions.count
+        
+        if isThereAWinner {
+            winner = activePlayer
+        }
+        
+        return isThereAWinner
+    }
+    
     func rematch() {
         player1.shotsTaken = [Int]()
         player1.targetsHit = [Int]()
@@ -86,15 +103,9 @@ class Battle: PFObject, PFSubclassing {
         player2.shotsTaken = [Int]()
         player2.targetsHit = [Int]()
         player2.activeHits = [Int]()
-    }
-    
-    // MARK: - Parse
-    class func parseClassName() -> String! {
-        return "Battle"
-    }
-    
-    override class func load() {
-        self.registerSubclass()
+        
+        // maybe regenerate the fleets here
+        // then start a new game through Parse
     }
     
 }
