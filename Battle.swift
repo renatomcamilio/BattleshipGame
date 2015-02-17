@@ -79,7 +79,13 @@ class Battle: PFObject, PFSubclassing {
             turnHandler(false)
         }
         
-        // Save Parse Object in background
+        self.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                println("Just saved the turn with active player: \(self.activePlayer.name)")
+            } else {
+                println("Something happened: \(error.userInfo)")
+            }
+        }
     }
     
     func rematch() {

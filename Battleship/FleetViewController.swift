@@ -72,7 +72,7 @@ class FleetViewController: UICollectionViewController {
         let opponentShots = opponent?.shotsTaken ?? [Int]()
         
         // if shotsTaken contains index, ignore it
-        if mode == .Player || contains(opponentShots, indexPath.item) {
+        if mode == .Player || contains(opponentShots, indexPath.item) || battleDelegate?.battle?.activePlayer == player {
             return
         }
         

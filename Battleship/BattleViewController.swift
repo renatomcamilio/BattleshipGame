@@ -74,9 +74,6 @@ class BattleViewController: UIViewController {
         }
     }
     
-    
-    
-    
     func prepareForNextTurn() {
         calculatePlayerHealth()
 
@@ -95,8 +92,6 @@ class BattleViewController: UIViewController {
         roundLabel.text = "Round: \(String(self.battle!.round))"
         turnLabel.text = self.battle?.turn == 1 ? "Player turn" : "Opponent turn"
     }
-    
-    
     
     func playerSelectedCell(indexPath: NSIndexPath) {
         battle?.takeShot(indexPath)
@@ -125,30 +120,6 @@ class BattleViewController: UIViewController {
         // maybe define the opponent as winner, because the player is giving up
         battle?.winner = battle?.player2
         self.performSegueWithIdentifier("showBattleEndDashboard", sender: self)
-    }
-    
-    func animateViews() {
-        
-        // Setup view for opponentContainerView animation
-        var opponentContainerViewFront = UIView(frame: self.opponentContainerView.frame)
-        var opponentContainerViewBack = UIView(frame: self.opponentContainerView.frame)
-        self.opponentContainerView.addSubview(opponentContainerViewFront)
-        self.opponentContainerView.addSubview(opponentContainerViewBack)
-        
-        let views = (frontView: opponentContainerViewFront, backView: opponentContainerViewBack)
-        let transitionOptions = UIViewAnimationOptions.TransitionFlipFromRight
-        UIView.transitionWithView(self.opponentContainerView, duration: 0.5, options: transitionOptions, animations: {
-            // remove the front object...
-            views.frontView.removeFromSuperview()
-            
-            // ... and add the other object
-            self.opponentContainerView.addSubview(views.backView)
-            
-            }, completion: { finished in
-                // any code entered here will be applied
-                // .once the animation has completed
-        })
-
     }
 
     func calculatePlayerHealth() {
